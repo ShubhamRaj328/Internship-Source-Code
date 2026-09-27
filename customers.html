@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customers - Clothes4U Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/tailwind-config.js"></script>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Sidebar -->
+    <div id="sidebar"
+        class="fixed inset-y-0 left-0 z-60 w-64 bg-white shadow-xl sidebar-transition transform -translate-x-full lg:translate-x-0 dark:bg-[#1e1e1e] dark:border-r dark:border-[#2a2a2a] group sidebar-mobile-position"
+        data-collapsible="offcanvas">
+        <div class="flex flex-col h-full sidebar-content-mobile">
+            <!-- Logo -->
+            <div class="logo-container px-4">
+                <div
+                    class="flex items-center space-x-3 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:space-x-0">
+                    <div class="logo-icon">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Adobe%20Express%20-%20file%20%281%29-jApjl3BbI6pLPo8XO5wEXkqkMv7Sud.png"
+                            alt="Clothes4U Logo" class="logo-image">
+                    </div>
+                    <div class="logo-text-container flex items-end group-data-[collapsible=icon]:hidden">
+                        <span class="logo-text-main">Clothes4U</span>
+                        <span class="logo-text-sub">Admin</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="flex-1 px-4 py-6 space-y-2">
+                <a href="index.html"
+                    class="sidebar-item flex items-center px-4 py-3 text-sm font-medium text-gray-600 rounded-lg tooltip dark:text-gray-300">
+                    <i class="ph ph-house text-lg"></i>
+                    <span class="sidebar-text ml-3">Dashboard</span>
+                    <span class="tooltip-text">Dashboard</span>
+                </a>
+                <a href="products.html"
+                    class="sidebar-item flex items-center px-4 py-3 text-sm font-medium text-gray-600 rounded-lg tooltip dark:text-gray-300">
+                    <i class="ph ph-package text-lg"></i>
+                    <span class="sidebar-text ml-3">Products</span>
+                    <span class="tooltip-text">Products</span>
+                </a>
+                <a href="add-product.html"
+                    class="sidebar-item flex items-center px-4 py-3 text-sm font-medium text-gray-600 rounded-lg tooltip dark:text-gray-300">
+                    <i class="ph ph-plus-circle text-lg"></i>
+                    <span class="sidebar-text ml-3">Add Product</span>
+                    <span class="tooltip-text">Add Product</span>
+                </a>
+                <a href="orders.html"
+                    class="sidebar-item flex items-center px-4 py-3 text-sm font-medium text-gray-600 rounded-lg tooltip dark:text-gray-300">
+                    <i class="ph ph-shopping-cart text-lg"></i>
+                    <span class="sidebar-text ml-3">Orders</span>
+                    <span class="tooltip-text">Orders</span>
+                </a>
+                <a href="customers.html"
+                    class="sidebar-item active flex items-center px-4 py-3 text-sm font-medium rounded-lg tooltip">
+                    <i class="ph ph-users text-lg"></i>
+                    <span class="sidebar-text ml-3">Customers</span>
+                    <span class="tooltip-text">Customers</span>
+                </a>
+                <a href="analytics.html"
+                    class="sidebar-item flex items-center px-4 py-3 text-sm font-medium text-gray-600 rounded-lg tooltip dark:text-gray-300">
+                    <i class="ph ph-chart-bar text-lg"></i>
+                    <span class="sidebar-text ml-3">Analytics</span>
+                    <span class="tooltip-text">Analytics</span>
+                </a>
+                <a href="settings.html"
+                    class="sidebar-item flex items-center px-4 py-3 text-sm font-medium text-gray-600 rounded-lg tooltip dark:text-gray-300">
+                    <i class="ph ph-gear text-lg"></i>
+                    <span class="sidebar-text ml-3">Settings</span>
+                    <span class="tooltip-text">Settings</span>
+                </a>
+            </nav>
+
+            <!-- Logout Button -->
+            <div class="px-4 pb-4">
+                <button id="logoutBtn"
+                    class="logout-btn w-full flex items-center px-4 py-3 text-sm font-medium text-gray-600 rounded-lg tooltip dark:text-gray-300">
+                    <i class="ph ph-sign-out text-lg"></i>
+                    <span class="sidebar-text ml-3">Logout</span>
+                    <span class="tooltip-text">Logout</span>
+                </button>
+            </div>
+
+            <!-- User Profile -->
+            <div class="user-profile p-4 border-t border-gray-200 dark:border-[#2a2a2a]">
+                <div class="flex items-center">
+                    <div class="w-10 h-10 bg-primary-600 rounded-full flex items-center justify-center">
+                        <i class="ph ph-user text-white"></i>
+                    </div>
+                    <div class="ml-3 sidebar-user-info">
+                        <p class="text-sm font-medium text-gray-900 dark:text-gray-100">Admin User</p>
+                        <p class="text-xs text-gray-500">admin@clothes4u.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sidebar overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 z-55 bg-black bg-opacity-50 lg:hidden hidden"></div>
+
+    <!-- Main Content -->
+    <div id="main-content" class="lg:ml-64 sidebar-transition">
+        <!-- Top Header -->
+        <header
+            class="fixed top-0 right-0 left-0 lg:left-64 z-50 bg-white shadow-sm border-b border-gray-200 sidebar-transition dark:bg-[#1e1e1e] dark:border-[#2a2a2a]">
+            <div class="flex items-center justify-between px-4 py-4 sm:px-6 lg:px-8 h-16">
+                <div class="flex items-center">
+                    <!-- Mobile toggle button -->
+                    <button id="sidebar-toggle-mobile"
+                        class="lg:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-[#2a2a2a] dark:hover:text-gray-100">
+                        <i class="ph ph-sidebar-simple w-6 h-6 text-xl"></i>
+                    </button>
+                    <!-- Desktop toggle button -->
+                    <button id="sidebar-toggle-desktop"
+                        class="hidden lg:block p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 mr-4 dark:text-gray-300 dark:hover:bg-[#2a2a2a] dark:hover:text-gray-100">
+                        <i class="ph ph-sidebar-simple w-6 h-6 text-xl"></i>
+                    </button>
+                    <h1 class="ml-4 lg:ml-0 text-2xl font-bold text-gray-900 dark:text-gray-100">Customers</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <!-- Theme Toggle Button -->
+                    <button id="theme-toggle"
+                        class="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg dark:text-gray-300 dark:hover:bg-[#2a2a2a] dark:hover:text-gray-100">
+                        <i id="theme-toggle-icon" class="ph ph-sun theme-toggle-icon text-lg hidden dark:block"></i>
+                        <i id="theme-toggle-icon-dark"
+                            class="ph ph-moon theme-toggle-icon text-lg block dark:hidden"></i>
+                    </button>
+                    <!-- Simplified Notification Dropdown -->
+                    <div class="relative">
+                        <button id="notification-btn"
+                            class="relative p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg dark:text-gray-300 dark:hover:bg-[#2a2a2a] dark:hover:text-gray-100">
+                            <i class="ph ph-bell w-5 h-5 text-lg"></i>
+                            <span id="notification-count"
+                                class="notification-badge absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></span>
+                        </button>
+
+                        <!-- Notification Dropdown -->
+                        <div id="notification-dropdown"
+                            class="notification-dropdown absolute right-0 mt-2 w-80 bg-white rounded-xl shadow-lg border border-gray-200 z-50 dark:bg-[#1e1e1e] dark:border-[#2a2a2a]">
+
+                            <!-- Header -->
+                            <div
+                                class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-[#2a2a2a]">
+                                <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Notifications</h3>
+                                <span
+                                    class="px-2 py-1 text-xs font-medium bg-red-100 text-red-800 rounded-full dark:bg-[rgba(220,38,38,0.2)] dark:text-red-400">3
+                                    new</span>
+                            </div>
+
+                            <!-- Notification List -->
+                            <div class="max-h-80 overflow-y-auto">
+                                <!-- Order Notification -->
+                                <div
+                                    class="notification-item p-4 border-b border-gray-100 dark:border-[#2a2a2a] cursor-pointer">
+                                    <div class="flex items-start space-x-3">
+                                        <div
+                                            class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center dark:bg-[rgba(22,163,74,0.2)]">
+                                            <i class="ph ph-shopping-cart text-green-600 text-sm"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-sm font-medium text-gray-900 dark:text-gray-100">New Order
+                                                #ORD-1247</p>
+                                            <p class="text-xs text-gray-500 mt-1">John Doe ordered 2 items • Rs 129.99</p>
+                                            <p class="text-xs text-gray-400 mt-1">2 minutes ago</p>
+                                        </div>
+                                        <span class="w-2 h-2 bg-red-500 rounded-full mt-2"></span>
+                                    </div>
+                                </div>
+
+                                <!-- Low Stock Alert -->
+                                <div
+                                    class="notification-item p-4 border-b border-gray-100 dark:border-[#2a2a2a] cursor-pointer">
+                                    <div class="flex items-start space-x-3">
+                                        <div
+                                            class="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center dark:bg-[rgba(202,138,4,0.2)]">
+                                            <i class="ph ph-warning text-yellow-600 text-sm"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-sm font-medium text-gray-900 dark:text-gray-100">Low Stock
+                                                Alert</p>
+                                            <p class="text-xs text-gray-500 mt-1">Classic T-Shirt has only 3 items left
+                                            </p>
+                                            <p class="text-xs text-gray-400 mt-1">15 minutes ago</p>
+                                        </div>
+                                        <span class="w-2 h-2 bg-red-500 rounded-full mt-2"></span>
+                                    </div>
+                                </div>
+
+                                <!-- New Customer -->
+                                <div
+                                    class="notification-item p-4 border-b border-gray-100 dark:border-[#2a2a2a] cursor-pointer">
+                                    <div class="flex items-start space-x-3">
+                                        <div
+                                            class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center dark:bg-[rgba(37,99,235,0.2)]">
+                                            <i class="ph ph-user-plus text-blue-600 text-sm"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-sm font-medium text-gray-900 dark:text-gray-100">New Customer
+                                            </p>
+                                            <p class="text-xs text-gray-500 mt-1">Sarah Wilson just registered</p>
+                                            <p class="text-xs text-gray-400 mt-1">1 hour ago</p>
+                                        </div>
+                                        <span class="w-2 h-2 bg-red-500 rounded-full mt-2"></span>
+                                    </div>
+                                </div>
+
+                                <!-- Payment Received -->
+                                <div class="notification-item p-4 cursor-pointer">
+                                    <div class="flex items-start space-x-3">
+                                        <div
+                                            class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center dark:bg-[rgba(22,163,74,0.2)]">
+                                            <i class="ph ph-currency-inr text-green-600 text-sm"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-sm font-medium text-gray-900 dark:text-gray-100">Payment
+                                                Received</p>
+                                            <p class="text-xs text-gray-500 mt-1">Rs 89.99 for Order #ORD-1246</p>
+                                            <p class="text-xs text-gray-400 mt-1">2 hours ago</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Footer -->
+                            <div class="p-4 border-t border-gray-200 dark:border-[#2a2a2a]">
+                                <a href="notifications.html"
+                                    class="block w-full text-center text-sm text-primary-600 hover:text-primary-700 font-medium py-2 hover:bg-gray-50 rounded-lg transition-colors dark:hover:bg-[#2a2a2a]">
+                                    View All Notifications
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <button onclick="openAddCustomerModal()"
+                        class="mobile-header-btn bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors font-medium"
+                        data-tooltip="Add Customer">
+                        <i class="ph ph-user-plus mr-2"></i>
+                        <span class="btn-text">Add Customer</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+        <div id="header-spacer"></div>
+
+        <!-- Customers Content -->
+        <main class="p-4 sm:p-6 lg:p-8">
+            <!-- Stats Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-xl border border-gray-200 card-hover dark:border-[#2a2a2a]">
+                    <div class="flex items-center">
+                        <div class="p-3 bg-blue-100 rounded-lg">
+                            <i class="ph ph-users text-blue-600"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Total Customers</p>
+                            <p class="text-2xl font-bold text-gray-900 dark:text-gray-100">2,345</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-gray-200 card-hover dark:border-[#2a2a2a]">
+                    <div class="flex items-center">
+                        <div class="p-3 bg-green-100 rounded-lg">
+                            <i class="ph ph-user-check text-green-600"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Active Customers</p>
+                            <p class="text-2xl font-bold text-gray-900 dark:text-gray-100">1,892</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-gray-200 card-hover dark:border-[#2a2a2a]">
+                    <div class="flex items-center">
+                        <div class="p-3 bg-yellow-100 rounded-lg">
+                            <i class="ph ph-star text-yellow-600"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm text-gray-600 dark:text-gray-400">VIP Customers</p>
+                            <p class="text-2xl font-bold text-gray-900 dark:text-gray-100">156</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-gray-200 card-hover dark:border-[#2a2a2a]">
+                    <div class="flex items-center">
+                        <div class="p-3 bg-purple-100 rounded-lg">
+                            <i class="ph ph-chart-line text-purple-600"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Avg. Order Value</p>
+                            <p class="text-2xl font-bold text-gray-900 dark:text-gray-100">Rs 127</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="bg-white rounded-xl border border-gray-200 p-6 mb-8 dark:border-[#2a2a2a]">
+                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+                    <div class="flex flex-col sm:flex-row gap-4 flex-1">
+                        <!-- Search -->
+                        <div class="relative flex-1 max-w-md">
+                            <input type="text" id="searchInput" placeholder="Search customers..."
+                                class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-100 dark:placeholder-gray-400">
+                            <i
+                                class="ph ph-magnifying-glass absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        </div>
+
+                        <!-- Status Filter -->
+                        <select id="statusFilter"
+                            class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-100">
+                            <option value="">All Status</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">Inactive</option>
+                            <option value="vip">VIP</option>
+                        </select>
+
+                        <!-- Sort Filter -->
+                        <select id="sortFilter"
+                            class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-100">
+                            <option value="name">Sort by Name</option>
+                            <option value="orders">Sort by Orders</option>
+                            <option value="spent">Sort by Total Spent</option>
+                            <option value="date">Sort by Join Date</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customers Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="customersGrid">
+                <!-- Customers will be loaded here -->
+            </div>
+
+            <!-- Pagination -->
+            <div class="flex items-center justify-between mt-8">
+                <div class="text-sm text-gray-700 dark:text-gray-300">
+                    Showing <span class="font-medium">1</span> to <span class="font-medium">12</span> of <span
+                        class="font-medium">2,345</span> results
+                </div>
+                <div class="flex items-center space-x-2">
+                    <button
+                        class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-300 dark:hover:bg-[#333333]">
+                        Previous
+                    </button>
+                    <button
+                        class="px-3 py-2 text-sm font-medium text-white bg-primary-600 border border-primary-600 rounded-lg">
+                        1
+                    </button>
+                    <button
+                        class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-300 dark:hover:bg-[#333333]">
+                        2
+                    </button>
+                    <button
+                        class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-300 dark:hover:bg-[#333333]">
+                        3
+                    </button>
+                    <button
+                        class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-300 dark:hover:bg-[#333333]">
+                        Next
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- All existing modals remain the same -->
+    <!-- Customer Details Modal -->
+    <div id="customerModal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+        <div class="modal-backdrop fixed inset-0 bg-black bg-opacity-50 transition-opacity"></div>
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <div
+                class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full dark:bg-[#1e1e1e]">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4 dark:bg-[#1e1e1e]">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100">Customer Details</h3>
+                        <button id="closeCustomerModal"
+                            class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
+                            <i class="ph ph-x"></i>
+                        </button>
+                    </div>
+                    <div id="customerModalContent">
+                        <!-- Customer details will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Email Compose Modal -->
+    <div id="emailModal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+        <div class="modal-backdrop fixed inset-0 bg-black bg-opacity-50 transition-opacity"></div>
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <div
+                class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full dark:bg-[#1e1e1e]">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4 dark:bg-[#1e1e1e]">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100">Send Email</h3>
+                        <button id="closeEmailModal" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
+                            <i class="ph ph-x"></i>
+                        </button>
+                    </div>
+                    <form id="emailForm" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2 dark:text-gray-300">To:</label>
+                            <input type="email" id="emailTo" readonly
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-100">
+                        </div>
+                        <div>
+                            <label
+                                class="block text-sm font-medium text-gray-700 mb-2 dark:text-gray-300">Subject:</label>
+                            <input type="text" id="emailSubject"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-100"
+                                placeholder="Enter email subject">
+                        </div>
+                        <div>
+                            <label
+                                class="block text-sm font-medium text-gray-700 mb-2 dark:text-gray-300">Message:</label>
+                            <textarea id="emailMessage" rows="6"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 resize-none dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-100"
+                                placeholder="Type your message here..."></textarea>
+                        </div>
+                        <div class="flex justify-end space-x-3 pt-4">
+                            <button type="button" id="cancelEmail"
+                                class="px-4 py-2 text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors dark:bg-[#2a2a2a] dark:text-gray-300 dark:hover:bg-[#333333]">
+                                Cancel
+                            </button>
+                            <button type="submit"
+                                class="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors">
+                                <i class="ph ph-paper-plane-tilt mr-2"></i>
+                                Send Email
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Orders Modal -->
+    <div id="ordersModal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+        <div class="modal-backdrop fixed inset-0 bg-black bg-opacity-50 transition-opacity"></div>
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <div
+                class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full dark:bg-[#1e1e1e]">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4 dark:bg-[#1e1e1e]">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100">Customer Orders</h3>
+                        <button id="closeOrdersModal"
+                            class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
+                            <i class="ph ph-x"></i>
+                        </button>
+                    </div>
+                    <div id="ordersModalContent">
+                        <!-- Orders will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+        <div class="modal-backdrop fixed inset-0 bg-black bg-opacity-50 transition-opacity"></div>
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <div
+                class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-md sm:w-full dark:bg-[#1e1e1e]">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4 dark:bg-[#1e1e1e]">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100">Contact Customer</h3>
+                        <button id="closeContactModal"
+                            class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
+                            <i class="ph ph-x"></i>
+                        </button>
+                    </div>
+                    <div id="contactModalContent">
+                        <!-- Contact options will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logout Confirmation Modal -->
+    <div id="logoutModal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+        <div class="modal-backdrop fixed inset-0 bg-black bg-opacity-50 transition-opacity"></div>
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <div
+                class="inline-block align-bottom bg-white rounded-xl text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-md sm:w-full dark:bg-[#1e1e1e]">
+                <div class="bg-white px-6 pt-6 pb-4 dark:bg-[#1e1e1e]">
+                    <div
+                        class="flex items-center justify-center w-12 h-12 mx-auto bg-red-100 rounded-full mb-4 dark:bg-[rgba(220,38,38,0.2)]">
+                        <i class="ph ph-sign-out text-red-600 text-xl"></i>
+                    </div>
+
+                    <div class="text-center">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2 dark:text-gray-100">Confirm Logout</h3>
+                        <p class="text-gray-600 mb-6 dark:text-gray-400">
+                            Are you sure you want to logout? You will be redirected to the login page.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 px-6 py-4 flex flex-col sm:flex-row gap-3 sm:gap-4 dark:bg-[#1a1a1a]">
+                    <button id="cancelLogout"
+                        class="flex-1 px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors font-medium dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-300 dark:hover:bg-[#333333]">
+                        Cancel
+                    </button>
+                    <button id="confirmLogout"
+                        class="flex-1 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-medium">
+                        <i class="ph ph-sign-out mr-2"></i>
+                        Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Customer Modal -->
+    <div id="addCustomerModal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+        <div class="modal-backdrop fixed inset-0 bg-black bg-opacity-50 transition-opacity"></div>
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <div
+                class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full dark:bg-[#1e1e1e]">
+                <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4 dark:bg-[#1e1e1e]">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-medium text-gray-900 dark:text-gray-100">Add New Customer</h3>
+                        <button id="closeAddCustomerModal"
+                            class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-300">
+                            <i class="ph ph-x"></i>
+                        </button>
+                    </div>
+                    <form id="addCustomerForm" class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2 dark:text-gray-300">Full Name
+                                    *</label>
+                                <input type="text" id="customerName" required
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-100"
+                                    placeholder="Enter customer's full name">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2 dark:text-gray-300">Email
+                                    Address *</label>
+                                <input type="email" id="customerEmail" required
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-100"
+                                    placeholder="Enter email address">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2 dark:text-gray-300">Phone
+                                    Number *</label>
+                                <input type="tel" id="customerPhone" required
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-100"
+                                    placeholder="+1 (555) 123-4567">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2 dark:text-gray-300">Customer
+                                    Status</label>
+                                <select id="customerStatus"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-100">
+                                    <option value="active">Active</option>
+                                    <option value="inactive">Inactive</option>
+                                    <option value="vip">VIP</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label
+                                class="block text-sm font-medium text-gray-700 mb-2 dark:text-gray-300">Address</label>
+                            <textarea id="customerAddress" rows="3"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 resize-none dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-100"
+                                placeholder="Enter customer's address"></textarea>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-2 dark:text-gray-300">Notes
+                                (Optional)</label>
+                            <textarea id="customerNotes" rows="2"
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 resize-none dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-100"
+                                placeholder="Any additional notes about the customer"></textarea>
+                        </div>
+
+                        <div class="flex justify-end space-x-3 pt-4 border-t dark:border-[#2a2a2a]">
+                            <button type="button" id="cancelAddCustomer"
+                                class="px-4 py-2 text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors dark:bg-[#2a2a2a] dark:text-gray-300 dark:hover:bg-[#333333]">
+                                Cancel
+                            </button>
+                            <button type="submit" id="submitAddCustomer"
+                                class="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors">
+                                <i class="ph ph-user-plus mr-2"></i>
+                                Add Customer
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Import main.js for common functionality -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/customers.js"></script>
+    <script type="text/plain">
+            {
+                id: 1,
+                name: 'John Doe',
+                email: 'john@example.com',
+                phone: '+1 (555) 123-4567',
+                status: 'active',
+                totalOrders: 12,
+                totalSpent: 1247.50,
+                joinDate: '2026-03-15',
+                lastOrder: '2026-01-10',
+                address: '123 Main St, City, State 12345',
+                orders: [
+                    { id: 'ORD-001', date: '2026-01-10', total: 89.99, status: 'delivered' },
+                    { id: 'ORD-015', date: '2026-12-28', total: 156.50, status: 'delivered' },
+                    { id: 'ORD-032', date: '2026-12-15', total: 234.75, status: 'delivered' }
+                ]
+            },
+            {
+                id: 2,
+                name: 'Jane Smith',
+                email: 'jane@example.com',
+                phone: '+1 (555) 234-5678',
+                status: 'vip',
+                totalOrders: 28,
+                totalSpent: 3456.75,
+                joinDate: '2023-11-22',
+                lastOrder: '2026-01-12',
+                address: '456 Oak Ave, City, State 12345',
+                orders: [
+                    { id: 'ORD-002', date: '2026-01-12', total: 199.99, status: 'shipped' },
+                    { id: 'ORD-018', date: '2026-01-05', total: 89.50, status: 'delivered' },
+                    { id: 'ORD-025', date: '2026-12-20', total: 345.25, status: 'delivered' }
+                ]
+            },
+            {
+                id: 3,
+                name: 'Mike Johnson',
+                email: 'mike@example.com',
+                phone: '+1 (555) 345-6789',
+                status: 'active',
+                totalOrders: 8,
+                totalSpent: 892.30,
+                joinDate: '2026-06-08',
+                lastOrder: '2026-01-05',
+                address: '789 Pine St, City, State 12345',
+                orders: [
+                    { id: 'ORD-003', date: '2026-01-05', total: 129.99, status: 'processing' },
+                    { id: 'ORD-012', date: '2026-12-18', total: 67.50, status: 'delivered' }
+                ]
+            },
+            {
+                id: 4,
+                name: 'Sarah Wilson',
+                email: 'sarah@example.com',
+                phone: '+1 (555) 456-7890',
+                status: 'inactive',
+                totalOrders: 3,
+                totalSpent: 234.99,
+                joinDate: '2026-09-12',
+                lastOrder: '2026-11-20',
+                address: '321 Elm St, City, State 12345',
+                orders: [
+                    { id: 'ORD-004', date: '2026-11-20', total: 89.99, status: 'delivered' },
+                    { id: 'ORD-008', date: '2026-10-15', total: 145.00, status: 'delivered' }
+                ]
+            },
+            {
+                id: 5,
+                name: 'David Brown',
+                email: 'david@example.com',
+                phone: '+1 (555) 567-8901',
+                status: 'active',
+                totalOrders: 15,
+                totalSpent: 1678.45,
+                joinDate: '2026-01-30',
+                lastOrder: '2026-01-08',
+                address: '654 Maple Ave, City, State 12345',
+                orders: [
+                    { id: 'ORD-005', date: '2026-01-08', total: 178.50, status: 'shipped' },
+                    { id: 'ORD-011', date: '2026-12-25', total: 299.99, status: 'delivered' }
+                ]
+            },
+            {
+                id: 6,
+                name: 'Emily Davis',
+                email: 'emily@example.com',
+                phone: '+1 (555) 678-9012',
+                status: 'vip',
+                totalOrders: 35,
+                totalSpent: 4523.80,
+                joinDate: '2023-08-14',
+                lastOrder: '2026-01-14',
+                address: '987 Cedar Ln, City, State 12345',
+                orders: [
+                    { id: 'ORD-006', date: '2026-01-14', total: 456.75, status: 'processing' },
+                    { id: 'ORD-019', date: '2026-01-02', total: 234.50, status: 'delivered' },
+                    { id: 'ORD-028', date: '2026-12-28', total: 567.25, status: 'delivered' }
+                ]
+            }
+        ];
+
+        let currentCustomer = null;
+
+        // Initialize customers page
+        document.addEventListener('DOMContentLoaded', function () {
+            renderCustomers();
+            setupCustomerEventListeners();
+
+            // Add sidebar toggle functionality
+            const sidebarToggleDesktop = document.getElementById('sidebar-toggle-desktop');
+            const sidebar = document.getElementById('sidebar');
+
+            if (sidebarToggleDesktop && sidebar) {
+                sidebarToggleDesktop.addEventListener('click', function () {
+                    const currentState = sidebar.getAttribute('data-collapsible');
+                    if (currentState === 'icon') {
+                        sidebar.setAttribute('data-collapsible', 'offcanvas');
+                    } else {
+                        sidebar.setAttribute('data-collapsible', 'icon');
+                    }
+                });
+            }
+        });
+
+        // Setup customer-specific event listeners
+        function setupCustomerEventListeners() {
+            // Filters
+            document.getElementById('searchInput').addEventListener('input', filterCustomers);
+            document.getElementById('statusFilter').addEventListener('change', filterCustomers);
+            document.getElementById('sortFilter').addEventListener('change', filterCustomers);
+
+            // Modal close buttons
+            document.getElementById('closeCustomerModal').addEventListener('click', closeCustomerModal);
+            document.getElementById('closeEmailModal').addEventListener('click', closeEmailModal);
+            document.getElementById('closeOrdersModal').addEventListener('click', closeOrdersModal);
+            document.getElementById('closeContactModal').addEventListener('click', closeContactModal);
+            document.getElementById('cancelEmail').addEventListener('click', closeEmailModal);
+
+            // Add Customer Modal
+            document.getElementById('closeAddCustomerModal').addEventListener('click', closeAddCustomerModal);
+            document.getElementById('cancelAddCustomer').addEventListener('click', closeAddCustomerModal);
+            document.getElementById('addCustomerForm').addEventListener('submit', handleAddCustomerSubmit);
+            document.getElementById('customerPhone').addEventListener('input', function (e) {
+                const formatted = formatPhoneNumber(e.target.value);
+                if (formatted !== e.target.value) {
+                    e.target.value = formatted;
+                }
+            });
+
+            // Modal backdrop click to close
+            document.getElementById('addCustomerModal').addEventListener('click', function (e) {
+                if (e.target === this) {
+                    closeAddCustomerModal();
+                }
+            });
+        }
+
+        // Add Customer Modal Functions
+        function openAddCustomerModal() {
+            const modal = document.getElementById('addCustomerModal');
+            customerModalManager.openModal(modal);
+
+            // Reset form
+            document.getElementById('addCustomerForm').reset();
+            document.getElementById('customerStatus').value = 'active';
+        }
+
+        function closeAddCustomerModal() {
+            const modal = document.getElementById('addCustomerModal');
+            customerModalManager.closeModal(modal);
+        }
+
+        // Handle Add Customer Form Submission
+        function handleAddCustomerSubmit(e) {
+            e.preventDefault();
+
+            const submitButton = document.getElementById('submitAddCustomer');
+            const originalText = submitButton.innerHTML;
+
+            // Show loading state
+            submitButton.innerHTML = '<i class="ph ph-spinner ph-spin mr-2"></i>Adding...';
+            submitButton.disabled = true;
+
+            // Get form data
+            const formData = {
+                name: document.getElementById('customerName').value.trim(),
+                email: document.getElementById('customerEmail').value.trim(),
+                phone: document.getElementById('customerPhone').value.trim(),
+                status: document.getElementById('customerStatus').value,
+                address: document.getElementById('customerAddress').value.trim(),
+                notes: document.getElementById('customerNotes').value.trim()
+            };
+
+            // Validate required fields
+            if (!formData.name || !formData.email || !formData.phone) {
+                Utils.showNotification('Please fill in all required fields.', 'error');
+                submitButton.innerHTML = originalText;
+                submitButton.disabled = false;
+                return;
+            }
+
+            // Validate email format
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(formData.email)) {
+                Utils.showNotification('Please enter a valid email address.', 'error');
+                submitButton.innerHTML = originalText;
+                submitButton.disabled = false;
+                return;
+            }
+
+            // Check if email already exists
+            const existingCustomer = customers.find(c => c.email.toLowerCase() === formData.email.toLowerCase());
+            if (existingCustomer) {
+                Utils.showNotification('A customer with this email already exists.', 'error');
+                submitButton.innerHTML = originalText;
+                submitButton.disabled = false;
+                return;
+            }
+
+            // Simulate API call delay
+            setTimeout(() => {
+                // Create new customer object
+                const newCustomer = {
+                    id: customers.length + 1,
+                    name: formData.name,
+                    email: formData.email,
+                    phone: formData.phone,
+                    status: formData.status,
+                    totalOrders: 0,
+                    totalSpent: 0.00,
+                    joinDate: new Date().toISOString().split('T')[0],
+                    lastOrder: null,
+                    address: formData.address || 'No address provided',
+                    notes: formData.notes,
+                    orders: []
+                };
+
+                // Add to customers array
+                customers.push(newCustomer);
+
+                // Re-render customers grid
+                renderCustomers();
+
+                // Show success message
+                Utils.showNotification(`Customer "${formData.name}" has been added successfully!`);
+
+                // Close modal
+                closeAddCustomerModal();
+
+                // Reset button state
+                submitButton.innerHTML = originalText;
+                submitButton.disabled = false;
+
+                // Update stats (optional - you might want to recalculate these)
+                updateCustomerStats();
+
+            }, 1500); // Simulate network delay
+        }
+
+        // Update customer statistics
+        function updateCustomerStats() {
+            const totalCustomers = customers.length;
+            const activeCustomers = customers.filter(c => c.status === 'active').length;
+            const vipCustomers = customers.filter(c => c.status === 'vip').length;
+            const avgOrderValue = customers.reduce((sum, c) => sum + c.totalSpent, 0) / totalCustomers || 0;
+
+            // Update the stats cards (you might want to make this more dynamic)
+            console.log('Updated stats:', { totalCustomers, activeCustomers, vipCustomers, avgOrderValue });
+        }
+
+        // Phone number formatting
+        function formatPhoneNumber(input) {
+            // Remove all non-digit characters
+            const cleaned = input.replace(/\D/g, '');
+
+            // Format as (XXX) XXX-XXXX
+            const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+            if (match) {
+                return `(${match[1]}) ${match[2]}-${match[3]}`;
+            }
+
+            return input;
+        }
+
+        // Add this function before the renderCustomers function
+        function getStatusBadge(status) {
+            const badges = {
+                active: 'bg-green-100 text-green-800 dark:bg-[rgba(22,163,74,0.2)] dark:text-green-400',
+                inactive: 'bg-gray-100 text-gray-800 dark:bg-[rgba(75,85,99,0.2)] dark:text-gray-400',
+                vip: 'bg-yellow-100 text-yellow-800 dark:bg-[rgba(202,138,4,0.2)] dark:text-yellow-400'
+            };
+
+            const icons = {
+                active: 'ph ph-check-circle',
+                inactive: 'ph ph-pause-circle',
+                vip: 'ph ph-star'
+            };
+
+            return `<span class="px-2 py-1 text-xs font-medium rounded-full ${badges[status]} flex items-center">
+                    <i class="${icons[status]} mr-1"></i>
+                    ${status.toUpperCase()}
+                </span>`;
+        }
+
+        // Render customers
+        function renderCustomers() {
+            const grid = document.getElementById('customersGrid');
+            grid.innerHTML = customers.map(customer => `
+                <div class="bg-white rounded-xl border border-gray-200 p-6 card-hover dark:border-[#2a2a2a]">
+                    <div class="flex items-start justify-between mb-4">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center">
+                                <i class="ph ph-user text-primary-600"></i>
+                            </div>
+                            <div class="ml-3">
+                                <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">${customer.name}</h3>
+                                <p class="text-sm text-gray-500">${customer.email}</p>
+                            </div>
+                        </div>
+                        ${getStatusBadge(customer.status)}
+                    </div>
+                    
+                    <div class="space-y-3">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-600 dark:text-gray-400">Total Orders:</span>
+                            <span class="font-medium text-gray-900 dark:text-gray-100">${customer.totalOrders}</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-600 dark:text-gray-400">Total Spent:</span>
+                            <span class="font-medium text-gray-900 dark:text-gray-100">Rs ${customer.totalSpent.toFixed(2)}</span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-600 dark:text-gray-400">Last Order:</span>
+                            <span class="font-medium text-gray-900 dark:text-gray-100">${Utils.formatDate(customer.lastOrder)}</span>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6 flex gap-2">
+                        <button onclick="viewCustomer(${customer.id})" class="flex-1 bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors text-sm font-medium">
+                            View Details
+                        </button>
+                        <button onclick="contactCustomer(${customer.id})" class="flex-1 bg-gray-100 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-200 transition-colors text-sm font-medium dark:bg-[#2a2a2a] dark:text-gray-300 dark:hover:bg-[#333333]">
+                            Contact
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Filter customers
+        function filterCustomers() {
+            console.log('Filtering customers...');
+        }
+
+        // View customer details
+        function viewCustomer(customerId) {
+            const customer = customers.find(c => c.id === customerId);
+            if (!customer) return;
+
+            currentCustomer = customer;
+            const modalContent = document.getElementById('customerModalContent');
+            modalContent.innerHTML = `
+                <div class="space-y-6">
+                    <div class="flex items-center">
+                        <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center">
+                            <i class="ph ph-user text-primary-600 text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h4 class="text-xl font-semibold text-gray-900 dark:text-gray-100">${customer.name}</h4>
+                            <p class="text-gray-600 dark:text-gray-400">${customer.email}</p>
+                            ${getStatusBadge(customer.status)}
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <h5 class="font-medium text-gray-900 mb-2 dark:text-gray-100">Contact Information</h5>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Phone: ${customer.phone}</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Email: ${customer.email}</p>
+                        </div>
+                        <div>
+                            <h5 class="font-medium text-gray-900 mb-2 dark:text-gray-100">Order Statistics</h5>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Total Orders: ${customer.totalOrders}</p>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Total Spent: Rs ${customer.totalSpent.toFixed(2)}</p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h5 class="font-medium text-gray-900 mb-2 dark:text-gray-100">Address</h5>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">${customer.address}</p>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <h5 class="font-medium text-gray-900 mb-2 dark:text-gray-100">Join Date</h5>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">${Utils.formatDate(customer.joinDate)}</p>
+                        </div>
+                        <div>
+                            <h5 class="font-medium text-gray-900 mb-2 dark:text-gray-100">Last Order</h5>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">${Utils.formatDate(customer.lastOrder)}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex gap-3 pt-4 border-t dark:border-[#2a2a2a]">
+                        <button onclick="sendEmail(${customer.id})" class="flex-1 bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors">
+                            <i class="ph ph-envelope mr-2"></i>
+                            Send Email
+                        </button>
+                        <button onclick="viewOrders(${customer.id})" class="flex-1 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors">
+                            <i class="ph ph-shopping-cart mr-2"></i>
+                            View Orders
+                        </button>
+                        <button onclick="showContactOptions(${customer.id})" class="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                            <i class="ph ph-phone mr-2"></i>
+                            Contact
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            const modal = document.getElementById('customerModal');
+            customerModalManager.openModal(modal);
+        }
+
+        // Send email function
+        function sendEmail(customerId) {
+            const customer = customers.find(c => c.id === customerId);
+            if (!customer) return;
+
+            document.getElementById('emailTo').value = customer.email;
+            document.getElementById('emailSubject').value = `Hello ${customer.name}`;
+            document.getElementById('emailMessage').value = '';
+
+            closeCustomerModal();
+            const emailModal = document.getElementById('emailModal');
+            customerModalManager.openModal(emailModal);
+        }
+
+        // View orders function
+        function viewOrders(customerId) {
+            const customer = customers.find(c => c.id === customerId);
+            if (!customer) return;
+
+            const ordersContent = document.getElementById('ordersModalContent');
+            ordersContent.innerHTML = `
+        <div class="space-y-4">
+            <div class="flex items-center justify-between">
+                <h4 class="text-lg font-semibold text-gray-900 dark:text-gray-100">${customer.name}'s Orders</h4>
+                <span class="text-sm text-gray-500">${customer.orders.length} orders total</span>
+            </div>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead class="bg-gray-50 dark:bg-[#2a2a2a]">
+                        <tr>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Order ID</th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Date</th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Total</th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Status</th>
+                            <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase dark:text-gray-400">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-gray-200 dark:divide-[#2a2a2a]">
+                        ${customer.orders.map(order => `
+                            <tr>
+                                <td class="px-4 py-3 text-sm font-medium text-gray-900 dark:text-gray-100">${order.id}</td>
+                                <td class="px-4 py-3 text-sm text-gray-600 dark:text-gray-400">${Utils.formatDate(order.date)}</td>
+                                <td class="px-4 py-3 text-sm text-gray-900 dark:text-gray-100">Rs ${order.total.toFixed(2)}</td>
+                                <td class="px-4 py-3 text-sm">
+                                    ${Utils.getStatusBadge(order.status)}
+                                </td>
+                                <td class="px-4 py-3 text-sm">
+                                    <button onclick="window.open('orders.html', '_blank')" class="text-primary-600 hover:text-primary-700">
+                                        <i class="ph ph-arrow-square-out"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="flex justify-end pt-4 border-t dark:border-[#2a2a2a]">
+                <button onclick="window.open('orders.html', '_blank')" class="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors">
+                    <i class="ph ph-arrow-square-out mr-2"></i>
+                    View All Orders
+                </button>
+            </div>
+        </div>
+    `;
+
+            closeCustomerModal();
+            const ordersModal = document.getElementById('ordersModal');
+            customerModalManager.openModal(ordersModal);
+        }
+
+        // Show contact options
+        function showContactOptions(customerId) {
+            const customer = customers.find(c => c.id === customerId);
+            if (!customer) return;
+
+            const contactContent = document.getElementById('contactModalContent');
+            contactContent.innerHTML = `
+        <div class="space-y-4">
+            <div class="text-center mb-6">
+                <h4 class="text-lg font-semibold text-gray-900 mb-2 dark:text-gray-100">Contact ${customer.name}</h4>
+                <p class="text-sm text-gray-600 dark:text-gray-400">Choose how you'd like to contact this customer</p>
+            </div>
+            
+            <div class="space-y-3">
+                <button onclick="callCustomer('${customer.phone}')" class="w-full flex items-center justify-center px-4 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors">
+                    <i class="ph ph-phone mr-3"></i>
+                    Call ${customer.phone}
+                </button>
+                
+                <button onclick="sendEmail(${customer.id}); closeContactModal();" class="w-full flex items-center justify-center px-4 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                    <i class="ph ph-envelope mr-3"></i>
+                    Send Email
+                </button>
+                
+                <button onclick="sendSMS('${customer.phone}')" class="w-full flex items-center justify-center px-4 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors">
+                    <i class="ph ph-chat-text mr-3"></i>
+                    Send SMS
+                </button>
+                
+                <button onclick="copyContactInfo('${customer.name}', '${customer.email}', '${customer.phone}')" class="w-full flex items-center justify-center px-4 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors">
+                    <i class="ph ph-copy mr-3"></i>
+                    Copy Contact Info
+                </button>
+            </div>
+        </div>
+    `;
+
+            closeCustomerModal();
+            const contactModal = document.getElementById('contactModal');
+            customerModalManager.openModal(contactModal);
+        }
+
+        // Contact functions
+        function callCustomer(phone) {
+            window.location.href = `tel:${phone}`;
+        }
+
+        function sendSMS(phone) {
+            window.location.href = `sms:${phone}`;
+        }
+
+        function copyContactInfo(name, email, phone) {
+            const contactInfo = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}`;
+            navigator.clipboard.writeText(contactInfo).then(() => {
+                Utils.showNotification('Contact information copied to clipboard!');
+                closeContactModal();
+            });
+        }
+
+        // Handle email form submission
+        function handleEmailSubmit(e) {
+            e.preventDefault();
+
+            const to = document.getElementById('emailTo').value;
+            const subject = document.getElementById('emailSubject').value;
+            const message = document.getElementById('emailMessage').value;
+
+            // Create mailto link
+            const mailtoLink = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+            window.location.href = mailtoLink;
+
+            Utils.showNotification('Email client opened successfully!');
+            closeEmailModal();
+        }
+
+        // Close modal functions
+        // Modal Management Class for Customers Page
+        class CustomerModalManager {
+            constructor() {
+                this.scrollPosition = 0;
+            }
+
+            openModal(modal) {
+                modal.classList.remove('hidden');
+                document.body.classList.add('modal-open');
+                // Store current scroll position
+                this.scrollPosition = window.pageYOffset;
+                document.body.style.top = `-${this.scrollPosition}px`;
+                document.body.style.position = 'fixed';
+                document.body.style.width = '100%';
+            }
+
+            closeModal(modal) {
+                modal.classList.add('hidden');
+                document.body.classList.remove('modal-open');
+                // Restore scroll position
+                document.body.style.position = '';
+                document.body.style.top = '';
+                document.body.style.width = '';
+                window.scrollTo(0, this.scrollPosition);
+            }
+        }
+
+        // Initialize modal manager
+        const customerModalManager = new CustomerModalManager();
+
+        // Updated close modal functions
+        function closeCustomerModal() {
+            const modal = document.getElementById('customerModal');
+            customerModalManager.closeModal(modal);
+        }
+
+        function closeEmailModal() {
+            const modal = document.getElementById('emailModal');
+            customerModalManager.closeModal(modal);
+        }
+
+        function closeOrdersModal() {
+            const modal = document.getElementById('ordersModal');
+            customerModalManager.closeModal(modal);
+        }
+
+        function closeContactModal() {
+            const modal = document.getElementById('contactModal');
+            customerModalManager.closeModal(modal);
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders - Clothes4U Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/tailwind-config.js"></script>
+</head>
+
+<body class="bg-gray-50">
+    <!-- Sidebar -->
+    <div id="sidebar"
+        class="fixed inset-y-0 left-0 z-60 w-64 bg-white shadow-xl sidebar-transition transform -translate-x-full lg:translate-x-0 dark:bg-[#1e1e1e] dark:border-r dark:border-[#2a2a2a] group sidebar-mobile-position"
+        data-collapsible="offcanvas">
+        <div class="flex flex-col h-full sidebar-content-mobile">
+            <!-- Logo -->
+            <div class="logo-container px-4">
+                <div
+                    class="flex items-center space-x-3 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:space-x-0">
+                    <div class="logo-icon">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Adobe%20Express%20-%20file%20%281%29-jApjl3BbI6pLPo8XO5wEXkqkMv7Sud.png"
+                            alt="Clothes4U Logo" class="logo-image">
+                    </div>
+                    <div class="logo-text-container flex items-end group-data-[collapsible=icon]:hidden">
+                        <span class="logo-text-main">Clothes4U</span>
+                        <span class="logo-text-sub">Admin</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="flex-1 px-4 py-6 space-y-2">
+                <a href="index.html"
+                    class="sidebar-item flex items-center px-4 py-3 text-sm font-medium text-gray-600 rounded-lg tooltip dark:text-gray-300">
+                    <i class="ph ph-house text-lg"></i>
+                    <span class="sidebar-text ml-3">Dashboard</span>
+                    <span class="tooltip-text">Dashboard</span>
+                </a>
+                <a href="products.html"
+                    class="sidebar-item flex items-center px-4 py-3 text-sm font-medium text-gray-600 rounded-lg tooltip dark:text-gray-300">
+                    <i class="ph ph-package text-lg"></i>
+                    <span class="sidebar-text ml-3">Products</span>
+                    <span class="tooltip-text">Products</span>
+                </a>
+                <a href="add-product.html"
+                    class="sidebar-item flex items-center px-4 py-3 text-sm font-medium text-gray-600 rounded-lg tooltip dark:text-gray-300">
+                    <i class="ph ph-plus-circle text-lg"></i>
+                    <span class="sidebar-text ml-3">Add Product</span>
+                    <span class="tooltip-text">Add Product</span>
+                </a>
+                <a href="orders.html"
+                    class="sidebar-item active flex items-center px-4 py-3 text-sm font-medium rounded-lg tooltip">
+                    <i class="ph ph-shopping-cart text-lg"></i>
+                    <span class="sidebar-text ml-3">Orders</span>
+                    <span class="tooltip-text">Orders</span>
+                </a>
+                <a href="customers.html"
+                    class="sidebar-item flex items-center px-4 py-3 text-sm font-medium text-gray-600 rounded-lg tooltip dark:text-gray-300">
+                    <i class="ph ph-users text-lg"></i>
+                    <span class="sidebar-text ml-3">Customers</span>
+                    <span class="tooltip-text">Customers</span>
+                </a>
+                <a href="analytics.html"
+                    class="sidebar-item flex items-center px-4 py-3 text-sm font-medium text-gray-600 rounded-lg tooltip dark:text-gray-300">
+                    <i class="ph ph-chart-bar text-lg"></i>
+                    <span class="sidebar-text ml-3">Analytics</span>
+                    <span class="tooltip-text">Analytics</span>
+                </a>
+                <a href="settings.html"
+                    class="sidebar-item flex items-center px-4 py-3 text-sm font-medium text-gray-600 rounded-lg tooltip dark:text-gray-300">
+                    <i class="ph ph-gear text-lg"></i>
+                    <span class="sidebar-text ml-3">Settings</span>
+                    <span class="tooltip-text">Settings</span>
+                </a>
+            </nav>
+
+            <!-- Logout Button -->
+            <div class="px-4 pb-4">
+                <button id="logoutBtn"
+                    class="logout-btn w-full flex items-center px-4 py-3 text-sm font-medium text-gray-600 rounded-lg tooltip dark:text-gray-300">
+                    <i class="ph ph-sign-out text-lg"></i>
+                    <span class="sidebar-text ml-3">Logout</span>
+                    <span class="tooltip-text">Logout</span>
+                </button>
+            </div>
+
+            <!-- User Profile -->
+            <div class="user-profile p-4 border-t border-gray-200 dark:border-[#2a2a2a]">
+                <div class="flex items-center">
+                    <div class="w-10 h-10 bg-primary-600 rounded-full flex items-center justify-center">
+                        <i class="ph ph-user text-white"></i>
+                    </div>
+                    <div class="ml-3 sidebar-user-info">
+                        <p class="text-sm font-medium text-gray-900 dark:text-gray-100">Admin User</p>
+                        <p class="text-xs text-gray-500">admin@clothes4u.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sidebar overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 z-55 bg-black bg-opacity-50 lg:hidden hidden"></div>
+
+    <!-- Main Content -->
+    <div id="main-content" class="lg:ml-64 sidebar-transition">
+        <!-- Top Header -->
+        <header
+            class="fixed top-0 right-0 left-0 lg:left-64 z-50 bg-white shadow-sm border-b border-gray-200 sidebar-transition dark:bg-[#1e1e1e] dark:border-[#2a2a2a]">
+            <div class="flex items-center justify-between px-4 py-4 sm:px-6 lg:px-8 h-16">
+                <div class="flex items-center">
+                    <!-- Mobile toggle button -->
+                    <button id="sidebar-toggle-mobile"
+                        class="lg:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-[#2a2a2a] dark:hover:text-gray-100">
+                        <i class="ph ph-sidebar-simple w-6 h-6 text-xl"></i>
+                    </button>
+                    <!-- Desktop toggle button -->
+                    <button id="sidebar-toggle-desktop"
+                        class="hidden lg:block p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 mr-4 dark:text-gray-300 dark:hover:bg-[#2a2a2a] dark:hover:text-gray-100">
+                        <i class="ph ph-sidebar-simple w-6 h-6 text-xl"></i>
+                    </button>
+                    <h1 class="ml-4 lg:ml-0 text-2xl font-bold text-gray-900 dark:text-gray-100">Orders</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <!-- Theme Toggle Button -->
+                    <button id="theme-toggle"
+                        class="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg dark:text-gray-300 dark:hover:bg-[#2a2a2a] dark:hover:text-gray-100">
+                        <i id="theme-toggle-icon" class="ph ph-sun theme-toggle-icon text-lg hidden dark:block"></i>
+                        <i id="theme-toggle-icon-dark"
+                            class="ph ph-moon theme-toggle-icon text-lg block dark:hidden"></i>
+                    </button>
+                    <!-- Simplified Notification Dropdown -->
+                    <div class="relative">
+                        <button id="notification-btn"
+                            class="relative p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg dark:text-gray-300 dark:hover:bg-[#2a2a2a] dark:hover:text-gray-100">
+                            <i class="ph ph-bell w-5 h-5 text-lg"></i>
+                            <span id="notification-count"
+                                class="notification-badge absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></span>
+                        </button>
+
+                        <!-- Notification Dropdown -->
+                        <div id="notification-dropdown"
+                            class="notification-dropdown absolute right-0 mt-2 w-80 bg-white rounded-xl shadow-lg border border-gray-200 z-50 dark:bg-[#1e1e1e] dark:border-[#2a2a2a]">
+
+                            <!-- Header -->
+                            <div
+                                class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-[#2a2a2a]">
+                                <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Notifications</h3>
+                                <span
+                                    class="px-2 py-1 text-xs font-medium bg-red-100 text-red-800 rounded-full dark:bg-[rgba(220,38,38,0.2)] dark:text-red-400">3
+                                    new</span>
+                            </div>
+
+                            <!-- Notification List -->
+                            <div class="max-h-80 overflow-y-auto">
+                                <!-- Order Notification -->
+                                <div
+                                    class="notification-item p-4 border-b border-gray-100 dark:border-[#2a2a2a] cursor-pointer">
+                                    <div class="flex items-start space-x-3">
+                                        <div
+                                            class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center dark:bg-[rgba(22,163,74,0.2)]">
+                                            <i class="ph ph-shopping-cart text-green-600 text-sm"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-sm font-medium text-gray-900 dark:text-gray-100">New Order
+                                                #ORD-1247</p>
+                                            <p class="text-xs text-gray-500 mt-1">John Doe ordered 2 items • Rs 129.99</p>
+                                            <p class="text-xs text-gray-400 mt-1">2 minutes ago</p>
+                                        </div>
+                                        <span class="w-2 h-2 bg-red-500 rounded-full mt-2"></span>
+                                    </div>
+                                </div>
+
+                                <!-- Low Stock Alert -->
+                                <div
+                                    class="notification-item p-4 border-b border-gray-100 dark:border-[#2a2a2a] cursor-pointer">
+                                    <div class="flex items-start space-x-3">
+                                        <div
+                                            class="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center dark:bg-[rgba(202,138,4,0.2)]">
+                                            <i class="ph ph-warning text-yellow-600 text-sm"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-sm font-medium text-gray-900 dark:text-gray-100">Low Stock
+                                                Alert</p>
+                                            <p class="text-xs text-gray-500 mt-1">Classic T-Shirt has only 3 items left
+                                            </p>
+                                            <p class="text-xs text-gray-400 mt-1">15 minutes ago</p>
+                                        </div>
+                                        <span class="w-2 h-2 bg-red-500 rounded-full mt-2"></span>
+                                    </div>
+                                </div>
+
+                                <!-- New Customer -->
+                                <div
+                                    class="notification-item p-4 border-b border-gray-100 dark:border-[#2a2a2a] cursor-pointer">
+                                    <div class="flex items-start space-x-3">
+                                        <div
+                                            class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center dark:bg-[rgba(37,99,235,0.2)]">
+                                            <i class="ph ph-user-plus text-blue-600 text-sm"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-sm font-medium text-gray-900 dark:text-gray-100">New Customer
+                                            </p>
+                                            <p class="text-xs text-gray-500 mt-1">Sarah Wilson just registered</p>
+                                            <p class="text-xs text-gray-400 mt-1">1 hour ago</p>
+                                        </div>
+                                        <span class="w-2 h-2 bg-red-500 rounded-full mt-2"></span>
+                                    </div>
+                                </div>
+
+                                <!-- Payment Received -->
+                                <div class="notification-item p-4 cursor-pointer">
+                                    <div class="flex items-start space-x-3">
+                                        <div
+                                            class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center dark:bg-[rgba(22,163,74,0.2)]">
+                                            <i class="ph ph-currency-inr text-green-600 text-sm"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-sm font-medium text-gray-900 dark:text-gray-100">Payment
+                                                Received</p>
+                                            <p class="text-xs text-gray-500 mt-1">Rs 89.99 for Order #ORD-1246</p>
+                                            <p class="text-xs text-gray-400 mt-1">2 hours ago</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Footer -->
+                            <div class="p-4 border-t border-gray-200 dark:border-[#2a2a2a]">
+                                <a href="notifications.html"
+                                    class="block w-full text-center text-sm text-primary-600 hover:text-primary-700 font-medium py-2 hover:bg-gray-50 rounded-lg transition-colors dark:hover:bg-[#2a2a2a]">
+                                    View All Notifications
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <button
+                        class="mobile-header-btn bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors font-medium"
+                        data-tooltip="Export Orders">
+                        <i class="ph ph-download mr-2"></i>
+                        <span class="btn-text">Export Orders</span>
+                    </button>
+                </div>
+            </div>
+        </header>
+        <div id="header-spacer"></div>
+
+        <!-- Orders Content -->
+        <main class="p-4 sm:p-6 lg:p-8">
+            <!-- Stats Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-xl border border-gray-200 card-hover dark:border-[#2a2a2a]">
+                    <div class="flex items-center">
+                        <div class="p-3 bg-blue-100 rounded-lg dark:bg-[rgba(37,99,235,0.2)]">
+                            <i class="ph ph-shopping-cart text-blue-600"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Total Orders</p>
+                            <p class="text-2xl font-bold text-gray-900 dark:text-gray-100">1,247</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-gray-200 card-hover dark:border-[#2a2a2a]">
+                    <div class="flex items-center">
+                        <div class="p-3 bg-yellow-100 rounded-lg dark:bg-[rgba(202,138,4,0.2)]">
+                            <i class="ph ph-clock text-yellow-600"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Pending</p>
+                            <p class="text-2xl font-bold text-gray-900 dark:text-gray-100">23</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-gray-200 card-hover dark:border-[#2a2a2a]">
+                    <div class="flex items-center">
+                        <div class="p-3 bg-green-100 rounded-lg dark:bg-[rgba(22,163,74,0.2)]">
+                            <i class="ph ph-check-circle text-green-600"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Completed</p>
+                            <p class="text-2xl font-bold text-gray-900 dark:text-gray-100">1,156</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-gray-200 card-hover dark:border-[#2a2a2a]">
+                    <div class="flex items-center">
+                        <div class="p-3 bg-red-100 rounded-lg dark:bg-[rgba(220,38,38,0.2)]">
+                            <i class="ph ph-x-circle text-red-600"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Cancelled</p>
+                            <p class="text-2xl font-bold text-gray-900 dark:text-gray-100">68</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="bg-white rounded-xl border border-gray-200 p-6 mb-8 dark:border-[#2a2a2a]">
+                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+                    <div class="flex flex-col sm:flex-row gap-4 flex-1">
+                        <!-- Search -->
+                        <div class="relative flex-1 max-w-md">
+                            <input type="text" id="searchInput" placeholder="Search orders..."
+                                class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-100 dark:placeholder-gray-400">
+                            <i
+                                class="ph ph-magnifying-glass absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        </div>
+
+                        <!-- Status Filter -->
+                        <select id="statusFilter"
+                            class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-100">
+                            <option value="">All Status</option>
+                            <option value="pending">Pending</option>
+                            <option value="processing">Processing</option>
+                            <option value="shipped">Shipped</option>
+                            <option value="delivered">Delivered</option>
+                            <option value="cancelled">Cancelled</option>
+                        </select>
+
+                        <!-- Date Filter -->
+                        <select id="dateFilter"
+                            class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-100">
+                            <option value="">All Time</option>
+                            <option value="today">Today</option>
+                            <option value="week">This Week</option>
+                            <option value="month">This Month</option>
+                            <option value="quarter">This Quarter</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Orders Table -->
+            <div class="bg-white rounded-xl border border-gray-200 overflow-hidden dark:border-[#2a2a2a]">
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead class="bg-gray-50 border-b border-gray-200 dark:bg-[#2a2a2a] dark:border-[#3a3a3a]">
+                            <tr>
+                                <th
+                                    class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400">
+                                    Order ID</th>
+                                <th
+                                    class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400">
+                                    Customer</th>
+                                <th
+                                    class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400">
+                                    Products</th>
+                                <th
+                                    class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400">
+                                    Total</th>
+                                <th
+                                    class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400">
+                                    Status</th>
+                                <th
+                                    class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400">
+                                    Date</th>
+                                <th
+                                    class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400">
+                                    Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="ordersTableBody"
+                            class="bg-white divide-y divide-gray-200 dark:bg-[#1e1e1e] dark:divide-[#2a2a2a]">
+                            <!-- Orders will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="flex items-center justify-between mt-8">
+                <div class="text-sm text-gray-700 dark:text-gray-300">
+                    Showing <span class="font-medium">1</span> to <span class="font-medium">10</span> of <span
+                        class="font-medium">1,247</span> results
+                </div>
+                <div class="flex items-center space-x-2">
+                    <button
+                        class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-300 dark:hover:bg-[#333333]">
+                        Previous
+                    </button>
+                    <button
+                        class="px-3 py-2 text-sm font-medium text-white bg-primary-600 border border-primary-600 rounded-lg">
+                        1
+                    </button>
+                    <button
+                        class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-300 dark:hover:bg-[#333333]">
+                        2
+                    </button>
+                    <button
+                        class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-300 dark:hover:bg-[#333333]">
+                        3
+                    </button>
+                    <button
+                        class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-300 dark:hover:bg-[#333333]">
+                        Next
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+    <!-- View Order Details Modal -->
+    <div id="viewOrderModal" class="fixed inset-0 z-50 hidden">
+        <div class="modal-backdrop fixed inset-0 bg-black bg-opacity-50 transition-opacity"></div>
+        <div class="fixed inset-0 z-10 overflow-y-auto">
+            <div class="flex min-h-full items-center justify-center p-4">
+                <div
+                    class="modal bg-white rounded-xl shadow-2xl w-full max-w-4xl transform transition-all dark:bg-[#1e1e1e]">
+                    <div class="px-6 py-4 border-b border-gray-200 dark:border-[#2a2a2a]">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Order Details</h3>
+                            <button onclick="closeViewOrderModal()"
+                                class="text-gray-400 hover:text-gray-600 transition-colors dark:hover:text-gray-300">
+                                <i class="ph ph-x text-xl"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="p-6">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <!-- Order Information -->
+                            <div>
+                                <h4 class="text-md font-semibold text-gray-900 mb-4 dark:text-gray-100">Order
+                                    Information
+                                </h4>
+
+                                <div class="space-y-4">
+                                    <!-- Order ID -->
+                                    <div class="flex justify-between">
+                                        <span class="text-sm text-gray-600 dark:text-gray-400">Order ID:</span>
+                                        <span id="viewOrderId"
+                                            class="text-sm font-medium text-gray-900 dark:text-gray-100"></span>
+                                    </div>
+
+                                    <!-- Order Date -->
+                                    <div class="flex justify-between">
+                                        <span class="text-sm text-gray-600 dark:text-gray-400">Order Date:</span>
+                                        <span id="viewOrderDate"
+                                            class="text-sm font-medium text-gray-900 dark:text-gray-100"></span>
+                                    </div>
+
+                                    <!-- Order Status -->
+                                    <div class="flex justify-between">
+                                        <span class="text-sm text-gray-600 dark:text-gray-400">Status:</span>
+                                        <span id="viewOrderStatus"></span>
+                                    </div>
+
+                                    <!-- Order Total -->
+                                    <div class="flex justify-between">
+                                        <span class="text-sm text-gray-600 dark:text-gray-400">Total:</span>
+                                        <span id="viewOrderTotal"
+                                            class="text-sm font-medium text-gray-900 dark:text-gray-100"></span>
+                                    </div>
+
+                                    <!-- Tracking Number -->
+                                    <div class="flex justify-between">
+                                        <span class="text-sm text-gray-600 dark:text-gray-400">Tracking Number:</span>
+                                        <span id="viewTrackingNumber"
+                                            class="text-sm font-medium text-gray-900 dark:text-gray-100"></span>
+                                    </div>
+                                </div>
+
+                                <h4 class="text-md font-semibold text-gray-900 mt-6 mb-4 dark:text-gray-100">Customer
+                                    Information</h4>
+
+                                <div class="space-y-4">
+                                    <!-- Customer Name -->
+                                    <div class="flex justify-between">
+                                        <span class="text-sm text-gray-600 dark:text-gray-400">Name:</span>
+                                        <span id="viewCustomerName"
+                                            class="text-sm font-medium text-gray-900 dark:text-gray-100"></span>
+                                    </div>
+
+                                    <!-- Customer Email -->
+                                    <div class="flex justify-between">
+                                        <span class="text-sm text-gray-600 dark:text-gray-400">Email:</span>
+                                        <span id="viewCustomerEmail"
+                                            class="text-sm font-medium text-gray-900 dark:text-gray-100"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Shipping Information -->
+                            <div>
+                                <h4 class="text-md font-semibold text-gray-900 mb-4 dark:text-gray-100">Shipping
+                                    Information
+                                </h4>
+
+                                <div class="p-4 bg-gray-50 rounded-lg mb-6 dark:bg-[#2a2a2a]">
+                                    <p id="viewShippingAddress" class="text-sm text-gray-900 dark:text-gray-100"></p>
+                                    <p id="viewShippingCityStateZip"
+                                        class="text-sm text-gray-900 mt-1 dark:text-gray-100">
+                                    </p>
+                                    <p id="viewShippingCountry" class="text-sm text-gray-900 mt-1 dark:text-gray-100">
+                                    </p>
+                                </div>
+
+                                <h4 class="text-md font-semibold text-gray-900 mb-4 dark:text-gray-100">Order Items</h4>
+
+                                <div id="viewOrderItems"
+                                    class="border border-gray-200 rounded-lg overflow-hidden dark:border-[#3a3a3a]">
+                                    <table class="min-w-full divide-y divide-gray-200 dark:divide-[#3a3a3a]">
+                                        <thead class="bg-gray-50 dark:bg-[#2a2a2a]">
+                                            <tr>
+                                                <th
+                                                    class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400">
+                                                    Item</th>
+                                                <th
+                                                    class="px-4 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400">
+                                                    Qty</th>
+                                                <th
+                                                    class="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400">
+                                                    Price</th>
+                                                <th
+                                                    class="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400">
+                                                    Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="viewOrderItemsList"
+                                            class="bg-white divide-y divide-gray-200 dark:bg-[#1e1e1e] dark:divide-[#3a3a3a]">
+                                            <!-- Order items will be populated here -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Notes Section -->
+                        <div class="mt-6 pt-6 border-t border-gray-200 dark:border-[#2a2a2a]">
+                            <h4 class="text-md font-semibold text-gray-900 mb-2 dark:text-gray-100">Order Notes</h4>
+                            <p id="viewOrderNotes" class="text-sm text-gray-600 dark:text-gray-400 italic"></p>
+                        </div>
+
+                        <div class="flex justify-end mt-6 pt-6 border-t border-gray-200 dark:border-[#2a2a2a]">
+                            <button type="button" onclick="closeViewOrderModal()"
+                                class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors dark:bg-[#2a2a2a] dark:text-gray-300 dark:hover:bg-[#333333]">
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Order Modal -->
+    <div id="editOrderModal" class="fixed inset-0 z-50 hidden">
+        <div class="modal-backdrop fixed inset-0 bg-black bg-opacity-50 transition-opacity"></div>
+        <div class="fixed inset-0 z-10 overflow-y-auto">
+            <div class="flex min-h-full items-center justify-center p-4">
+                <div
+                    class="modal bg-white rounded-xl shadow-2xl w-full max-w-4xl transform transition-all dark:bg-[#1e1e1e]">
+                    <div class="px-6 py-4 border-b border-gray-200 dark:border-[#2a2a2a]">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Edit Order</h3>
+                            <button onclick="closeEditOrderModal()"
+                                class="text-gray-400 hover:text-gray-600 transition-colors dark:hover:text-gray-300">
+                                <i class="ph ph-x text-xl"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <form id="editOrderForm" class="p-6">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                            <!-- Order Information -->
+                            <div>
+                                <h4 class="text-md font-semibold text-gray-900 mb-4 dark:text-gray-100">Order
+                                    Information</h4>
+
+                                <!-- Order ID -->
+                                <div class="mb-4">
+                                    <label for="editOrderId"
+                                        class="block text-sm font-medium text-gray-700 mb-2 dark:text-gray-300">Order
+                                        ID</label>
+                                    <input type="text" id="editOrderId" readonly
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg bg-gray-50 text-gray-500 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-400">
+                                </div>
+
+                                <!-- Customer Name -->
+                                <div class="mb-4">
+                                    <label for="editCustomerName"
+                                        class="block text-sm font-medium text-gray-700 mb-2 dark:text-gray-300">Customer
+                                        Name</label>
+                                    <input type="text" id="editCustomerName"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-100">
+                                </div>
+
+                                <!-- Customer Email -->
+                                <div class="mb-4">
+                                    <label for="editCustomerEmail"
+                                        class="block text-sm font-medium text-gray-700 mb-2 dark:text-gray-300">Customer
+                                        Email</label>
+                                    <input type="email" id="editCustomerEmail"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-100">
+                                </div>
+
+                                <!-- Order Status -->
+                                <div class="mb-4">
+                                    <label for="editOrderStatus"
+                                        class="block text-sm font-medium text-gray-700 mb-2 dark:text-gray-300">Order
+                                        Status</label>
+                                    <select id="editOrderStatus"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-100">
+                                        <option value="pending">Pending</option>
+                                        <option value="processing">Processing</option>
+                                        <option value="shipped">Shipped</option>
+                                        <option value="delivered">Delivered</option>
+                                        <option value="cancelled">Cancelled</option>
+                                    </select>
+                                </div>
+
+                                <!-- Order Date -->
+                                <div class="mb-4">
+                                    <label for="editOrderDate"
+                                        class="block text-sm font-medium text-gray-700 mb-2 dark:text-gray-300">Order
+                                        Date</label>
+                                    <input type="datetime-local" id="editOrderDate"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-100">
+                                </div>
+
+                                <!-- Tracking Number -->
+                                <div class="mb-4">
+                                    <label for="editTrackingNumber"
+                                        class="block text-sm font-medium text-gray-700 mb-2 dark:text-gray-300">Tracking
+                                        Number</label>
+                                    <input type="text" id="editTrackingNumber" placeholder="Optional"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-100 dark:placeholder-gray-400">
+                                </div>
+                            </div>
+
+                            <!-- Shipping Information -->
+                            <div>
+                                <h4 class="text-md font-semibold text-gray-900 mb-4 dark:text-gray-100">Shipping
+                                    Information</h4>
+
+                                <!-- Shipping Address -->
+                                <div class="mb-4">
+                                    <label for="editShippingAddress"
+                                        class="block text-sm font-medium text-gray-700 mb-2 dark:text-gray-300">Shipping
+                                        Address</label>
+                                    <textarea id="editShippingAddress" rows="3"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-100"></textarea>
+                                </div>
+
+                                <!-- City -->
+                                <div class="grid grid-cols-2 gap-4 mb-4">
+                                    <div>
+                                        <label for="editShippingCity"
+                                            class="block text-sm font-medium text-gray-700 mb-2 dark:text-gray-300">City</label>
+                                        <input type="text" id="editShippingCity"
+                                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-100">
+                                    </div>
+                                    <div>
+                                        <label for="editShippingZip"
+                                            class="block text-sm font-medium text-gray-700 mb-2 dark:text-gray-300">ZIP
+                                            Code</label>
+                                        <input type="text" id="editShippingZip"
+                                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-100">
+                                    </div>
+                                </div>
+
+                                <!-- State and Country -->
+                                <div class="grid grid-cols-2 gap-4 mb-4">
+                                    <div>
+                                        <label for="editShippingState"
+                                            class="block text-sm font-medium text-gray-700 mb-2 dark:text-gray-300">State</label>
+                                        <input type="text" id="editShippingState"
+                                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-100">
+                                    </div>
+                                    <div>
+                                        <label for="editShippingCountry"
+                                            class="block text-sm font-medium text-gray-700 mb-2 dark:text-gray-300">Country</label>
+                                        <input type="text" id="editShippingCountry"
+                                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-100">
+                                    </div>
+                                </div>
+
+                                <!-- Order Items -->
+                                <div class="mb-4">
+                                    <label class="block text-sm font-medium text-gray-700 mb-2 dark:text-gray-300">Order
+                                        Items</label>
+                                    <div id="editOrderItems"
+                                        class="border border-gray-200 rounded-lg p-4 bg-gray-50 max-h-40 overflow-y-auto dark:border-[#3a3a3a] dark:bg-[#2a2a2a]">
+                                        <!-- Order items will be populated here -->
+                                    </div>
+                                </div>
+
+                                <!-- Order Total -->
+                                <div class="mb-4">
+                                    <label for="editOrderTotal"
+                                        class="block text-sm font-medium text-gray-700 mb-2 dark:text-gray-300">Order
+                                        Total (Rs)</label>
+                                    <input type="number" id="editOrderTotal" step="0.01"
+                                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-100">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Notes Section -->
+                        <div class="mt-6 pt-6 border-t border-gray-200 dark:border-[#2a2a2a]">
+                            <label for="editOrderNotes"
+                                class="block text-sm font-medium text-gray-700 mb-2 dark:text-gray-300">Order
+                                Notes</label>
+                            <textarea id="editOrderNotes" rows="3" placeholder="Add any notes about this order..."
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-100 dark:placeholder-gray-400"></textarea>
+                        </div>
+
+                        <div
+                            class="flex justify-end space-x-3 mt-6 pt-6 border-t border-gray-200 dark:border-[#2a2a2a]">
+                            <button type="button" onclick="closeEditOrderModal()"
+                                class="px-4 py-2 text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors dark:bg-[#2a2a2a] dark:text-gray-300 dark:hover:bg-[#333333]">
+                                Cancel
+                            </button>
+                            <button type="submit"
+                                class="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors">
+                                Save Changes
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logout Confirmation Modal -->
+    <div id="logoutModal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+        <div class="modal-backdrop fixed inset-0 bg-black bg-opacity-50 transition-opacity"></div>
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <div
+                class="inline-block align-bottom bg-white rounded-xl text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-md sm:w-full dark:bg-[#1e1e1e]">
+                <div class="bg-white px-6 pt-6 pb-4 dark:bg-[#1e1e1e]">
+                    <div
+                        class="flex items-center justify-center w-12 h-12 mx-auto bg-red-100 rounded-full mb-4 dark:bg-[rgba(220,38,38,0.2)]">
+                        <i class="ph ph-sign-out text-red-600 text-xl"></i>
+                    </div>
+
+                    <div class="text-center">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2 dark:text-gray-100">Confirm Logout</h3>
+                        <p class="text-gray-600 mb-6 dark:text-gray-400">
+                            Are you sure you want to logout? You will be redirected to the login page.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 px-6 py-4 flex flex-col sm:flex-row gap-3 sm:gap-4 dark:bg-[#1a1a1a]">
+                    <button id="cancelLogout"
+                        class="flex-1 px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors font-medium dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-300 dark:hover:bg-[#333333]">
+                        Cancel
+                    </button>
+                    <button id="confirmLogout"
+                        class="flex-1 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-medium">
+                        <i class="ph ph-sign-out mr-2"></i>
+                        Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Import main.js first -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/orders.js"></script>
+    <script type="text/plain">
+            {
+                id: 'ORD-001',
+                customer: {
+                    name: 'John Doe',
+                    email: 'john.doe@email.com'
+                },
+                items: [
+                    { name: 'Classic T-Shirt', quantity: 2, price: 29.99 },
+                    { name: 'Denim Jeans', quantity: 1, price: 79.99 }
+                ],
+                total: 139.97,
+                status: 'delivered',
+                date: '2026-01-10T14:30:00',
+                trackingNumber: 'TRK123456789',
+                shipping: {
+                    address: '123 Main Street',
+                    city: 'New York',
+                    state: 'NY',
+                    zip: '10001',
+                    country: 'USA'
+                },
+                notes: 'Customer requested expedited shipping'
+            },
+            {
+                id: 'ORD-002',
+                customer: {
+                    name: 'Jane Smith',
+                    email: 'jane.smith@email.com'
+                },
+                items: [
+                    { name: 'Summer Dress', quantity: 1, price: 89.99 }
+                ],
+                total: 89.99,
+                status: 'shipped',
+                date: '2026-01-12T09:15:00',
+                trackingNumber: 'TRK987654321',
+                shipping: {
+                    address: '456 Oak Avenue',
+                    city: 'Los Angeles',
+                    state: 'CA',
+                    zip: '90210',
+                    country: 'USA'
+                },
+                notes: ''
+            },
+            {
+                id: 'ORD-003',
+                customer: {
+                    name: 'Mike Johnson',
+                    email: 'mike.johnson@email.com'
+                },
+                items: [
+                    { name: 'Winter Jacket', quantity: 1, price: 149.99 },
+                    { name: 'Leather Belt', quantity: 1, price: 39.99 },
+                    { name: 'Running Shoes', quantity: 1, price: 119.99 }
+                ],
+                total: 309.97,
+                status: 'processing',
+                date: '2026-01-13T16:45:00',
+                trackingNumber: '',
+                shipping: {
+                    address: '789 Pine Road',
+                    city: 'Chicago',
+                    state: 'IL',
+                    zip: '60601',
+                    country: 'USA'
+                },
+                notes: 'Gift wrapping requested'
+            },
+            {
+                id: 'ORD-004',
+                customer: {
+                    name: 'Sarah Wilson',
+                    email: 'sarah.wilson@email.com'
+                },
+                items: [
+                    { name: 'Classic T-Shirt', quantity: 1, price: 29.99 }
+                ],
+                total: 39.99,
+                status: 'pending',
+                date: '2026-01-14T11:20:00',
+                trackingNumber: '',
+                shipping: {
+                    address: '321 Elm Street',
+                    city: 'Miami',
+                    state: 'FL',
+                    zip: '33101',
+                    country: 'USA'
+                },
+                notes: ''
+            },
+            {
+                id: 'ORD-005',
+                customer: {
+                    name: 'David Brown',
+                    email: 'david.brown@email.com'
+                },
+                items: [
+                    { name: 'Denim Jeans', quantity: 2, price: 79.99 }
+                ],
+                total: 159.98,
+                status: 'cancelled',
+                date: '2026-01-11T13:10:00',
+                trackingNumber: '',
+                shipping: {
+                    address: '654 Maple Drive',
+                    city: 'Seattle',
+                    state: 'WA',
+                    zip: '98101',
+                    country: 'USA'
+                },
+                notes: 'Customer requested cancellation due to size issues'
+            }
+        ];
+
+        let currentEditingOrder = null;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function () {
+            renderOrders();
+            setupOrdersEventListeners();
+
+            // Add sidebar toggle functionality for desktop
+            const sidebarToggleDesktop = document.getElementById('sidebar-toggle-desktop');
+            const sidebar = document.getElementById('sidebar');
+
+            if (sidebarToggleDesktop && sidebar) {
+                sidebarToggleDesktop.addEventListener('click', function () {
+                    const currentState = sidebar.getAttribute('data-collapsible');
+                    if (currentState === 'icon') {
+                        sidebar.setAttribute('data-collapsible', 'offcanvas');
+                    } else {
+                        sidebar.setAttribute('data-collapsible', 'icon');
+                    }
+                });
+            }
+        });
+
+        // Setup orders-specific event listeners
+        function setupOrdersEventListeners() {
+            // Filters
+            document.getElementById('searchInput').addEventListener('input', filterOrders);
+            document.getElementById('statusFilter').addEventListener('change', filterOrders);
+            document.getElementById('dateFilter').addEventListener('change', filterOrders);
+
+            // Edit form submission
+            document.getElementById('editOrderForm').addEventListener('submit', handleEditSubmit);
+        }
+
+        // Render orders
+        function renderOrders() {
+            const tbody = document.getElementById('ordersTableBody');
+            tbody.innerHTML = orders.map(order => `
+                <tr class="hover:bg-gray-50 dark:hover:bg-[#2a2a2a]">
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm font-medium text-gray-900 dark:text-gray-100">${order.id}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div>
+                            <div class="text-sm font-medium text-gray-900 dark:text-gray-100">${order.customer.name}</div>
+                            <div class="text-sm text-gray-500">${order.customer.email}</div>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4">
+                        <div class="text-sm text-gray-900 dark:text-gray-100">
+                            ${order.items.map(item => `${item.quantity}x ${item.name}`).join(', ')}
+                        </div>
+                        <div class="text-sm text-gray-500">${order.items.length} item${order.items.length > 1 ? 's' : ''}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm font-medium text-gray-900 dark:text-gray-100">Rs ${order.total.toFixed(2)}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        ${Utils.getStatusBadge(order.status)}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900 dark:text-gray-100">${Utils.formatDateTime(order.date)}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                        <button onclick="editOrder('${order.id}')" class="text-primary-600 hover:text-primary-900 mr-3" title="Edit Order">
+                            <i class="ph ph-pencil"></i>
+                        </button>
+                        <button onclick="viewOrder('${order.id}')" class="text-blue-600 hover:text-blue-900 mr-3" title="View Details">
+                            <i class="ph ph-eye"></i>
+                        </button>
+                        <button onclick="printOrder('${order.id}')" class="text-green-600 hover:text-green-900" title="Print Order">
+                            <i class="ph ph-printer"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // Filter orders
+        function filterOrders() {
+            // Implementation for filtering orders
+            console.log('Filtering orders...');
+        }
+
+        // Close edit modal
+        function closeEditOrderModal() {
+            closeModal(document.getElementById('editOrderModal'));
+            currentEditingOrder = null;
+        }
+
+        // View order details
+        function viewOrder(orderId) {
+            const order = orders.find(o => o.id === orderId);
+            if (!order) return;
+
+            // Populate order details
+            document.getElementById('viewOrderId').textContent = order.id;
+            document.getElementById('viewOrderDate').textContent = Utils.formatDateTime(order.date);
+
+            // Set status with appropriate badge
+            const statusElement = document.getElementById('viewOrderStatus');
+            statusElement.innerHTML = Utils.getStatusBadge(order.status);
+
+            document.getElementById('viewOrderTotal').textContent = `Rs ${order.total.toFixed(2)}`;
+            document.getElementById('viewTrackingNumber').textContent = order.trackingNumber || 'Not available';
+            document.getElementById('viewCustomerName').textContent = order.customer.name;
+            document.getElementById('viewCustomerEmail').textContent = order.customer.email;
+
+            // Shipping information
+            document.getElementById('viewShippingAddress').textContent = order.shipping.address;
+            document.getElementById('viewShippingCityStateZip').textContent =
+                `${order.shipping.city}, ${order.shipping.state} ${order.shipping.zip}`;
+            document.getElementById('viewShippingCountry').textContent = order.shipping.country;
+
+            // Order notes
+            document.getElementById('viewOrderNotes').textContent = order.notes || 'No notes available for this order.';
+
+            // Populate order items
+            const itemsList = document.getElementById('viewOrderItemsList');
+            itemsList.innerHTML = order.items.map(item => {
+                const itemTotal = item.price * item.quantity;
+                return `
+        <tr class="hover:bg-gray-50 dark:hover:bg-[#2a2a2a]">
+            <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900 dark:text-gray-100">${item.name}</td>
+            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500 text-center dark:text-gray-400">${item.quantity}</td>
+            <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500 text-right dark:text-gray-400">Rs ${item.price.toFixed(2)}</td>
+            <td class="px-4 py-3 whitespace-nowrap text-sm font-medium text-gray-900 text-right dark:text-gray-100">Rs ${itemTotal.toFixed(2)}</td>
+        </tr>
+    `;
+            }).join('');
+
+            // Show modal
+            openModal(document.getElementById('viewOrderModal'));
+        }
+
+        // Close view modal
+        function closeViewOrderModal() {
+            closeModal(document.getElementById('viewOrderModal'));
+        }
+
+        // Edit order
+        function editOrder(orderId) {
+            const order = orders.find(o => o.id === orderId);
+            if (!order) return;
+
+            currentEditingOrder = order;
+
+            // Populate form fields
+            document.getElementById('editOrderId').value = order.id;
+            document.getElementById('editCustomerName').value = order.customer.name;
+            document.getElementById('editCustomerEmail').value = order.customer.email;
+            document.getElementById('editOrderStatus').value = order.status;
+            document.getElementById('editOrderDate').value = order.date;
+            document.getElementById('editTrackingNumber').value = order.trackingNumber || '';
+            document.getElementById('editShippingAddress').value = order.shipping.address;
+            document.getElementById('editShippingCity').value = order.shipping.city;
+            document.getElementById('editShippingState').value = order.shipping.state;
+            document.getElementById('editShippingZip').value = order.shipping.zip;
+            document.getElementById('editShippingCountry').value = order.shipping.country;
+            document.getElementById('editOrderTotal').value = order.total;
+            document.getElementById('editOrderNotes').value = order.notes || '';
+
+            // Populate order items
+            populateOrderItems(order.items);
+
+            // Show modal
+            openModal(document.getElementById('editOrderModal'));
+        }
+
+        // Modal utility functions
+        function openModal(modal) {
+            modal.classList.remove('hidden');
+            document.body.classList.add('modal-open');
+            // Store current scroll position
+            window.modalScrollPosition = window.pageYOffset;
+            document.body.style.top = `-${window.modalScrollPosition}px`;
+            document.body.style.position = 'fixed';
+            document.body.style.width = '100%';
+        }
+
+        function closeModal(modal) {
+            modal.classList.add('hidden');
+            document.body.classList.remove('modal-open');
+            // Restore scroll position
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            window.scrollTo(0, window.modalScrollPosition || 0);
+        }
+
+        // Populate order items
+        function populateOrderItems(items) {
+            const container = document.getElementById('editOrderItems');
+            container.innerHTML = items.map(item => `
+                <div class="flex justify-between items-center py-2 border-b border-gray-200 last:border-b-0 dark:border-[#3a3a3a]">
+                    <div>
+                        <div class="text-sm font-medium text-gray-900 dark:text-gray-100">${item.name}</div>
+                        <div class="text-xs text-gray-500">Quantity: ${item.quantity}</div>
+                    </div>
+                    <div class="text-sm font-medium text-gray-900 dark:text-gray-100">Rs ${(item.price * item.quantity).toFixed(2)}</div>
+                </div>
+            `).join('');
+        }
+
+        // Handle edit form submission
+        function handleEditSubmit(e) {
+            e.preventDefault();
+
+            if (!currentEditingOrder) return;
+
+            // Get form data
+            const formData = {
+                customer: {
+                    name: document.getElementById('editCustomerName').value,
+                    email: document.getElementById('editCustomerEmail').value
+                },
+                status: document.getElementById('editOrderStatus').value,
+                date: document.getElementById('editOrderDate').value,
+                trackingNumber: document.getElementById('editTrackingNumber').value,
+                shipping: {
+                    address: document.getElementById('editShippingAddress').value,
+                    city: document.getElementById('editShippingCity').value,
+                    state: document.getElementById('editShippingState').value,
+                    zip: document.getElementById('editShippingZip').value,
+                    country: document.getElementById('editShippingCountry').value
+                },
+                total: parseFloat(document.getElementById('editOrderTotal').value),
+                notes: document.getElementById('editOrderNotes').value
+            };
+
+            // Update order in array
+            const orderIndex = orders.findIndex(o => o.id === currentEditingOrder.id);
+            if (orderIndex !== -1) {
+                orders[orderIndex] = { ...orders[orderIndex], ...formData };
+            }
+
+            // Re-render orders
+            renderOrders();
+
+            // Close modal
+            closeEditOrderModal();
+
+            // Show success message
+            Utils.showNotification('Order updated successfully!', 'success');
+        }
+
+        // Print order
+        function printOrder(orderId) {
+            const order = orders.find(o => o.id === orderId);
+            if (!order) return;
+
+            Utils.showNotification(`Printing order ${orderId}`, 'success');
+        }
+
+        console.log('👕 Clothes4U Orders page loaded successfully!');
+    </script>
+</body>
+
+</html>

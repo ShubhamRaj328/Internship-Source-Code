@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help Center - Clothes4U Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/auth-and-info-pages.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/tailwind-config.js"></script>
+</head>
+
+<body class="min-h-screen p-4">
+
+    <!-- Header -->
+    <header class="max-w-4xl mx-auto mb-8 fade-in">
+        <div class="flex items-center justify-between">
+            <a href="login.html" class="flex items-end">
+                <span class="logo-text-main text-white">Clothes4U</span>
+                <span class="logo-text-sub text-gray-300">Admin</span>
+            </a>
+            <a href="login.html" class="text-white hover:text-primary-500 transition-colors flex items-center">
+                <i class="ph ph-arrow-left mr-1"></i>
+                Back to Login
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto bg-white bg-opacity-95 backdrop-blur-lg rounded-2xl p-6 sm:p-8 shadow-2xl fade-in">
+
+        <!-- Header Section -->
+        <div class="text-center mb-8">
+            <h1 class="text-3xl font-bold text-gray-900 mb-4">Help Center</h1>
+            <p class="text-gray-600 text-lg">Find answers to common questions and get support for Clothes4U Admin</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="grid md:grid-cols-3 gap-6 mb-12 fade-in fade-in-delay-1">
+            <div class="bg-primary-50 p-6 rounded-lg text-center">
+                <div class="bg-primary-100 rounded-full p-3 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                    <i class="ph ph-book text-primary-600 text-2xl"></i>
+                </div>
+                <h3 class="font-semibold text-gray-900 mb-2">Getting Started</h3>
+                <p class="text-gray-600 text-sm mb-4">Learn the basics of using Clothes4U Admin</p>
+                <button class="text-primary-600 hover:text-primary-700 font-medium text-sm">
+                    View Guide
+                </button>
+            </div>
+
+            <div class="bg-blue-50 p-6 rounded-lg text-center">
+                <div class="bg-blue-100 rounded-full p-3 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                    <i class="ph ph-video text-blue-600 text-2xl"></i>
+                </div>
+                <h3 class="font-semibold text-gray-900 mb-2">Video Tutorials</h3>
+                <p class="text-gray-600 text-sm mb-4">Watch step-by-step video guides</p>
+                <button class="text-blue-600 hover:text-blue-700 font-medium text-sm">
+                    Watch Videos
+                </button>
+            </div>
+
+            <div class="bg-green-50 p-6 rounded-lg text-center">
+                <div class="bg-green-100 rounded-full p-3 w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                    <i class="ph ph-headset text-green-600 text-2xl"></i>
+                </div>
+                <h3 class="font-semibold text-gray-900 mb-2">Contact Support</h3>
+                <p class="text-gray-600 text-sm mb-4">Get help from our support team</p>
+                <button class="text-green-600 hover:text-green-700 font-medium text-sm">
+                    Contact Us
+                </button>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="fade-in fade-in-delay-2">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+
+            <div class="space-y-4">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item">
+                    <div class="faq-question p-4 flex justify-between items-center" onclick="toggleFAQ(1)">
+                        <h3 class="font-medium text-gray-900">How do I reset my password?</h3>
+                        <i class="ph ph-caret-down faq-icon text-gray-500" id="icon-1"></i>
+                    </div>
+                    <div class="faq-answer" id="answer-1">
+                        <div class="p-4 pt-0 text-gray-600">
+                            <p>To reset your password:</p>
+                            <ol class="list-decimal pl-6 mt-2 space-y-1">
+                                <li>Click on "Forgot password?" on the login page</li>
+                                <li>Enter your email address</li>
+                                <li>Check your email for reset instructions</li>
+                                <li>Follow the link in the email to create a new password</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item">
+                    <div class="faq-question p-4 flex justify-between items-center" onclick="toggleFAQ(2)">
+                        <h3 class="font-medium text-gray-900">How do I add new products to my inventory?</h3>
+                        <i class="ph ph-caret-down faq-icon text-gray-500" id="icon-2"></i>
+                    </div>
+                    <div class="faq-answer" id="answer-2">
+                        <div class="p-4 pt-0 text-gray-600">
+                            <p>To add new products:</p>
+                            <ol class="list-decimal pl-6 mt-2 space-y-1">
+                                <li>Navigate to the Products section in the dashboard</li>
+                                <li>Click the "Add Product" button</li>
+                                <li>Fill in the product details (name, description, price, etc.)</li>
+                                <li>Upload product images</li>
+                                <li>Set inventory levels and save</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item">
+                    <div class="faq-question p-4 flex justify-between items-center" onclick="toggleFAQ(3)">
+                        <h3 class="font-medium text-gray-900">How can I track my sales performance?</h3>
+                        <i class="ph ph-caret-down faq-icon text-gray-500" id="icon-3"></i>
+                    </div>
+                    <div class="faq-answer" id="answer-3">
+                        <div class="p-4 pt-0 text-gray-600">
+                            <p>You can track sales performance through:</p>
+                            <ul class="list-disc pl-6 mt-2 space-y-1">
+                                <li>The main dashboard overview with key metrics</li>
+                                <li>The Analytics section for detailed reports</li>
+                                <li>Sales reports filtered by date range</li>
+                                <li>Product performance analytics</li>
+                                <li>Customer behavior insights</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 4 -->
+                <div class="faq-item">
+                    <div class="faq-question p-4 flex justify-between items-center" onclick="toggleFAQ(4)">
+                        <h3 class="font-medium text-gray-900">How do I manage customer orders?</h3>
+                        <i class="ph ph-caret-down faq-icon text-gray-500" id="icon-4"></i>
+                    </div>
+                    <div class="faq-answer" id="answer-4">
+                        <div class="p-4 pt-0 text-gray-600">
+                            <p>Order management features include:</p>
+                            <ul class="list-disc pl-6 mt-2 space-y-1">
+                                <li>View all orders in the Orders section</li>
+                                <li>Update order status (pending, processing, shipped, delivered)</li>
+                                <li>Print shipping labels and invoices</li>
+                                <li>Send order updates to customers</li>
+                                <li>Handle returns and refunds</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 5 -->
+                <div class="faq-item">
+                    <div class="faq-question p-4 flex justify-between items-center" onclick="toggleFAQ(5)">
+                        <h3 class="font-medium text-gray-900">What browsers are supported?</h3>
+                        <i class="ph ph-caret-down faq-icon text-gray-500" id="icon-5"></i>
+                    </div>
+                    <div class="faq-answer" id="answer-5">
+                        <div class="p-4 pt-0 text-gray-600">
+                            <p>Clothes4U Admin supports the following browsers:</p>
+                            <ul class="list-disc pl-6 mt-2 space-y-1">
+                                <li>Google Chrome (recommended)</li>
+                                <li>Mozilla Firefox</li>
+                                <li>Safari (macOS)</li>
+                                <li>Microsoft Edge</li>
+                            </ul>
+                            <p class="mt-2">For the best experience, please keep your browser updated to the latest
+                                version.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="mt-12 bg-gray-50 rounded-lg p-6 text-center fade-in fade-in-delay-2">
+            <h3 class="text-xl font-semibold text-gray-900 mb-4">Still need help?</h3>
+            <p class="text-gray-600 mb-6">Our support team is here to assist you with any questions or issues.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="mailto:support@clothes4u.com"
+                    class="bg-primary-600 text-white px-6 py-3 rounded-lg hover:bg-primary-700 transition-colors flex items-center justify-center">
+                    <i class="ph ph-envelope mr-2"></i>
+                    Email Support
+                </a>
+                <button
+                    class="bg-white text-primary-600 border border-primary-600 px-6 py-3 rounded-lg hover:bg-primary-50 transition-colors flex items-center justify-center">
+                    <i class="ph ph-chat-centered-text mr-2"></i>
+                    Live Chat
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="max-w-4xl mx-auto mt-8 text-center fade-in">
+        <p class="text-gray-400 text-sm flex items-center justify-center">
+            <i class="ph ph-copyright mr-1"></i>
+            2026 Clothes4U. All rights reserved.
+        </p>
+        <div class="flex items-center justify-center mt-2 space-x-4 text-gray-500">
+            <a href="privacy.html" class="hover:text-white transition-colors flex items-center text-sm">
+                <i class="ph ph-shield-check mr-1"></i>
+                Privacy
+            </a>
+            <a href="terms.html" class="hover:text-white transition-colors flex items-center text-sm">
+                <i class="ph ph-file-text mr-1"></i>
+                Terms
+            </a>
+            <a href="help.html" class="text-primary-500 hover:text-white transition-colors flex items-center text-sm">
+                <i class="ph ph-lifebuoy mr-1"></i>
+                Help
+            </a>
+        </div>
+    </footer>
+
+    <script src="assets/js/help.js"></script>
+</body>
+
+</html>

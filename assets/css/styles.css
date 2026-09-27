@@ -1,0 +1,1100 @@
+body {
+    font-family: "Inter", sans-serif;
+}
+
+.sidebar-transition {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover {
+    transition: all 0.2s ease-in-out;
+}
+
+.card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-item {
+    transition: all 0.2s ease-in-out;
+}
+
+.sidebar-item:hover {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #dc2626;
+}
+
+.sidebar-item.active {
+    background-color: #dc2626;
+    color: white;
+}
+
+.toggle-switch {
+    transition: all 0.3s ease;
+}
+
+.toggle-switch:checked {
+    background-color: #dc2626;
+}
+
+/* Fix icon alignment */
+.sidebar-item i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+}
+
+.logout-btn i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+}
+
+.stat-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+}
+
+.chart-container {
+    position: relative;
+    height: 300px;
+}
+
+input:focus,
+input:active,
+input:focus-visible,
+select:focus,
+select:active,
+select:focus-visible,
+textarea:focus,
+textarea:active,
+textarea:focus-visible,
+button:focus,
+button:active,
+button:focus-visible,
+*:focus,
+*:active,
+*:focus-visible {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.logo-image {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    flex-shrink: 0;
+    /* Prevent shrinking */
+}
+
+.logo-text-main {
+    font-family: "Dancing Script", cursive;
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: #dc2626;
+    line-height: 1;
+}
+
+.logo-text-sub {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #6b7280;
+    margin-left: 0.25rem;
+    align-self: flex-end;
+    line-height: 1;
+}
+
+.dark .logo-text-sub {
+    color: #9ca3af;
+}
+
+.logo-container {
+    min-height: 4.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Keep logo icon container consistent */
+.logo-icon {
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hide text when sidebar is collapsed */
+.group[data-collapsible="icon"] .logo-text-container {
+    display: none;
+}
+
+/* Center logo when collapsed */
+.group[data-collapsible="icon"] .logo-container {
+    justify-content: center;
+}
+
+.focus\:ring-2:focus {
+    box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.2) !important;
+}
+
+.focus\:ring-primary-500:focus {
+    box-shadow: 0 0 0 2px rgba(220, 38, 38, 0.2) !important;
+}
+
+.focus\:border-primary-500:focus {
+    border-color: #dc2626 !important;
+}
+
+/* Mobile sidebar positioning - ensure it's above fixed header */
+@media (max-width: 1023px) {
+    .sidebar-mobile-position {
+        top: 0;
+        height: 100vh;
+        z-index: 60;
+        /* Higher than header z-50 */
+    }
+}
+
+/* Sidebar overlay should be between header and sidebar */
+#sidebar-overlay {
+    z-index: 55;
+}
+
+/* Ensure sidebar content starts below header on mobile */
+@media (max-width: 1023px) {
+    .sidebar-content-mobile {
+        padding-top: 4rem;
+        /* Account for fixed header height */
+    }
+}
+
+/* Sidebar collapsed styles */
+.sidebar-collapsed {
+    width: 4rem !important;
+}
+
+.sidebar-collapsed .sidebar-text {
+    display: none;
+}
+
+.sidebar-collapsed .sidebar-logo-text {
+    display: none;
+}
+
+.sidebar-collapsed .sidebar-user-info {
+    display: none;
+}
+
+.sidebar-collapsed .sidebar-item {
+    justify-content: center;
+    padding: 0.75rem;
+    margin: 0.25rem;
+}
+
+.sidebar-collapsed .sidebar-item i {
+    margin: 0;
+}
+
+.sidebar-collapsed .logo-container {
+    justify-content: center;
+    padding: 1rem;
+}
+
+.sidebar-collapsed .logo-container .logo-icon {
+    margin: 0;
+}
+
+.sidebar-collapsed .user-profile {
+    justify-content: center;
+    padding: 1rem;
+}
+
+.sidebar-collapsed .logout-btn {
+    justify-content: center;
+    padding: 0.75rem;
+    margin: 0.25rem;
+}
+
+.sidebar-collapsed .logout-btn i {
+    margin: 0;
+}
+
+/* Tooltip styles for collapsed sidebar */
+.tooltip {
+    position: relative;
+}
+
+.sidebar-collapsed .tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltip-text {
+    visibility: hidden;
+    opacity: 0;
+    width: auto;
+    background-color: #1f2937;
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 12px;
+    position: absolute;
+    z-index: 1000;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 10px;
+    font-size: 14px;
+    white-space: nowrap;
+    transition: opacity 0.3s;
+}
+
+.tooltip-text::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent #1f2937 transparent transparent;
+}
+
+/* Hide tooltips when sidebar is not collapsed */
+.tooltip-text {
+    visibility: hidden;
+    opacity: 0;
+}
+
+/* Desktop sidebar z-index fix */
+@media (min-width: 1024px) {
+    #sidebar {
+        z-index: 10;
+        /* Lower z-index for desktop - below main content */
+        position: fixed;
+    }
+
+    /* Ensure main content is above sidebar on desktop */
+    #main-content {
+        z-index: 20;
+        position: relative;
+    }
+
+    /* Keep header above main content but below modals */
+    header {
+        z-index: 30;
+    }
+
+    /* Ensure modals and dropdowns are above everything */
+    .modal,
+    .notification-dropdown,
+    #logoutModal {
+        z-index: 50;
+    }
+}
+
+/* Mobile sidebar keeps high z-index */
+@media (max-width: 1023px) {
+    #sidebar {
+        z-index: 60;
+        /* High z-index for mobile - above all content */
+    }
+
+    #sidebar-overlay {
+        z-index: 55;
+    }
+
+    header {
+        z-index: 50;
+    }
+}
+
+.main-content-with-fixed-header {
+    padding-top: 6.5rem;
+    /* 104px */
+}
+
+/* Dark mode styles */
+.dark {
+    color-scheme: dark;
+}
+
+.dark body {
+    background-color: #121212;
+    color: #e5e5e5;
+}
+
+.dark .bg-white {
+    background-color: #1e1e1e;
+}
+
+.dark .bg-gray-50 {
+    background-color: #121212;
+}
+
+.dark .bg-gray-100 {
+    background-color: #2a2a2a;
+}
+
+.dark .text-gray-900 {
+    color: #e5e5e5;
+}
+
+.dark .text-gray-600 {
+    color: #a0a0a0;
+}
+
+.dark .text-gray-500 {
+    color: #8a8a8a;
+}
+
+.dark .border-gray-200 {
+    border-color: #2a2a2a;
+}
+
+.dark .border-gray-300 {
+    border-color: #3a3a3a;
+}
+
+.dark .hover\:bg-gray-100:hover {
+    background-color: #2a2a2a;
+}
+
+.dark .stat-card {
+    background: #1e1e1e;
+}
+
+.dark .bg-green-100 {
+    background-color: rgba(22, 163, 74, 0.2);
+}
+
+.dark .bg-blue-100 {
+    background-color: rgba(37, 99, 235, 0.2);
+}
+
+.dark .bg-purple-100 {
+    background-color: rgba(147, 51, 234, 0.2);
+}
+
+.dark .bg-yellow-100 {
+    background-color: rgba(202, 138, 4, 0.2);
+}
+
+.dark .bg-red-100 {
+    background-color: rgba(220, 38, 38, 0.2);
+}
+
+.dark .bg-primary-50 {
+    background-color: rgba(220, 38, 38, 0.1);
+}
+
+.dark .bg-blue-50 {
+    background-color: rgba(37, 99, 235, 0.1);
+}
+
+.dark .bg-green-50 {
+    background-color: rgba(22, 163, 74, 0.1);
+}
+
+.dark .bg-purple-50 {
+    background-color: rgba(147, 51, 234, 0.1);
+}
+
+.dark .bg-gray-50 {
+    background-color: #2a2a2a;
+}
+
+.dark .modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.dark .bg-gray-50 {
+    background-color: #1a1a1a;
+}
+
+/* Theme toggle animation */
+.theme-toggle-icon {
+    transition: transform 0.5s ease;
+}
+
+.theme-toggle-icon.rotate {
+    transform: rotate(360deg);
+}
+
+/* Simplified notification dropdown */
+.notification-dropdown {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.2s ease;
+    pointer-events: none;
+}
+
+.notification-dropdown.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.notification-item:hover {
+    background-color: rgba(239, 68, 68, 0.05);
+}
+
+.dark .notification-item:hover {
+    background-color: rgba(239, 68, 68, 0.1);
+}
+
+/* Badge pulse */
+.notification-badge {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* add-product*/
+.upload-area:hover {
+    border-color: #dc2626;
+    background-color: rgba(220, 38, 38, 0.05);
+}
+
+.upload-area.dragover {
+    border-color: #dc2626;
+    background-color: rgba(220, 38, 38, 0.1);
+    transform: scale(1.02);
+}
+
+.size-option {
+    transition: all 0.2s ease;
+}
+
+.size-option:hover {
+    transform: translateY(-1px);
+}
+
+.size-option.selected {
+    background-color: #dc2626;
+    color: white;
+}
+
+.logout-btn:hover {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: #dc2626;
+}
+
+.modal {
+    transition: all 0.3s ease;
+}
+
+.modal-backdrop {
+    backdrop-filter: blur(4px);
+}
+
+/* Custom red checkbox styles */
+.red-checkbox {
+    appearance: none;
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid #d1d5db;
+    border-radius: 0.25rem;
+    background-color: white;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.red-checkbox:checked {
+    background-color: #dc2626;
+    border-color: #dc2626;
+}
+
+.red-checkbox:checked::after {
+    content: "✓";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.red-checkbox:hover {
+    border-color: #dc2626;
+}
+
+.dark .red-checkbox {
+    background-color: #2a2a2a;
+    border-color: #3a3a3a;
+}
+
+.dark .red-checkbox:checked {
+    background-color: #dc2626;
+    border-color: #dc2626;
+}
+
+/*login*/
+.animated-bg {
+    background: linear-gradient(-45deg, #1f2937, #374151, #4b5563, #374151);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.form-container {
+    backdrop-filter: blur(20px);
+    transition: all 0.3s ease;
+}
+
+.form-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+}
+
+.input-field {
+    transition: all 0.3s ease;
+}
+
+.input-field:focus {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 25px rgba(220, 38, 38, 0.1);
+}
+
+.login-btn {
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.login-btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.login-btn:hover::before {
+    left: 100%;
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 15px 35px rgba(220, 38, 38, 0.3);
+}
+
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.fade-in-delay-1 {
+    animation-delay: 0.2s;
+}
+
+.fade-in-delay-2 {
+    animation-delay: 0.4s;
+}
+
+.fade-in-delay-3 {
+    animation-delay: 0.6s;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.logo-icon {
+    transition: transform 0.3s ease;
+}
+
+.logo-icon:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.notification {
+    transition: all 0.3s ease;
+}
+
+.notification.show {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.notification.hide {
+    opacity: 0;
+    transform: translateX(100%);
+}
+
+/*notification page*/
+.notification-item {
+    transition: all 0.15s ease-in-out;
+}
+
+.notification-item:hover {
+    background-color: rgba(239, 68, 68, 0.05);
+}
+
+.dark .notification-item:hover {
+    background-color: rgba(239, 68, 68, 0.1);
+}
+
+.notification-item.unread {
+    background-color: rgba(239, 68, 68, 0.02);
+    border-left: 4px solid #dc2626;
+}
+
+.dark .notification-item.unread {
+    background-color: rgba(239, 68, 68, 0.05);
+}
+
+/*products page*/
+.product-card {
+    transition: all 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
+}
+
+/*settings*/
+
+/* Dark mode input styles */
+.dark input,
+.dark select,
+.dark textarea {
+    background-color: #2a2a2a;
+    border-color: #3a3a3a;
+    color: #e5e5e5;
+}
+
+.dark input:focus,
+.dark select:focus,
+.dark textarea:focus {
+    border-color: #dc2626;
+    background-color: #2a2a2a;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+    color: #8a8a8a;
+}
+
+/*settings*/
+.toggle-switch:focus,
+.toggle-switch:focus-visible,
+input[type="checkbox"]:focus+div {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Make all headers smaller on mobile view, except sidebar header */
+@media (max-width: 640px) {
+
+    header h1,
+    header h2,
+    header h3,
+    header h4,
+    header h5,
+    header h6,
+    .header-container h1,
+    .header-container h2,
+    .header-container h3,
+    .header-container h4,
+    .header-container h5,
+    .header-container h6,
+    .modern-header h1,
+    .modern-header h2,
+    .modern-header h3,
+    .modern-header h4,
+    .modern-header h5,
+    .modern-header h6 {
+        font-size: 1.1rem !important;
+        /* You can further adjust per header level if needed */
+    }
+
+    header {
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.5rem !important;
+    }
+
+    /* Position notification dropdown with proper spacing on mobile */
+    #notification-dropdown {
+        right: 0.25rem !important;
+        left: auto !important;
+        transform: translateY(-10px);
+        width: 16rem !important;
+        max-width: 16rem !important;
+        min-width: unset !important;
+    }
+
+    #notification-dropdown.show {
+        transform: translateY(0);
+    }
+}
+
+/* Mobile pagination styles */
+@media (max-width: 640px) {
+    .pagination-container {
+        font-size: 0.75rem;
+        /* Make text smaller */
+    }
+
+    .pagination-button {
+        padding: 0.25rem 0.5rem !important;
+        /* Smaller padding */
+        font-size: 0.75rem !important;
+        /* Smaller font */
+    }
+
+    .pagination-info {
+        font-size: 0.75rem !important;
+        /* Smaller info text */
+    }
+
+    /* Hide page numbers 2 and 3 on mobile, keep only page 1 */
+    .pagination-page-2,
+    .pagination-page-3 {
+        display: none !important;
+    }
+
+    /* Target pagination buttons by their text content on mobile */
+    .flex.items-center.space-x-2 button:not(:first-child):not(:last-child):not([class*="bg-primary"]) {
+        display: none !important;
+    }
+
+    /* Make pagination container more compact on mobile */
+    .flex.items-center.justify-between.mt-8 {
+        flex-direction: column !important;
+        gap: 0.75rem !important;
+        align-items: center !important;
+    }
+
+    /* Make pagination buttons container more compact */
+    .flex.items-center.space-x-2 {
+        gap: 0.25rem !important;
+    }
+
+    /* Ensure Previous and Next buttons are smaller */
+    .flex.items-center.space-x-2 button {
+        padding: 0.25rem 0.5rem !important;
+        font-size: 0.75rem !important;
+    }
+
+    /* Keep only the active page button (page 1) visible */
+    .flex.items-center.space-x-2 button:nth-child(3),
+    .flex.items-center.space-x-2 button:nth-child(4) {
+        display: none !important;
+    }
+}
+
+/* Mobile header button styles */
+@media (max-width: 640px) {
+    .mobile-header-btn {
+        padding: 0.5rem !important;
+        font-size: 0 !important;
+        min-width: 2.5rem;
+        position: relative;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .mobile-header-btn i {
+        font-size: 1rem !important;
+        margin: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    .mobile-header-btn .btn-text {
+        display: none !important;
+    }
+
+    /* Improved tooltip for mobile header buttons */
+    .mobile-header-btn:hover::after {
+        content: attr(data-tooltip);
+        position: absolute;
+        bottom: -2.5rem;
+        right: 0;
+        background-color: #1f2937;
+        color: white;
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.375rem;
+        font-size: 0.75rem;
+        white-space: nowrap;
+        z-index: 1000;
+        opacity: 1;
+        max-width: calc(100vw - 1rem);
+        box-sizing: border-box;
+    }
+
+    .mobile-header-btn:hover::before {
+        content: "";
+        position: absolute;
+        bottom: -0.5rem;
+        right: 1rem;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 5px solid #1f2937;
+        z-index: 1000;
+    }
+
+    /* For buttons on the left side, position tooltip to the left */
+    .mobile-header-btn:first-child:hover::after {
+        right: auto;
+        left: 0;
+    }
+
+    .mobile-header-btn:first-child:hover::before {
+        right: auto;
+        left: 1rem;
+    }
+}
+
+/* Mobile stats cards - 2 per row with fixed equal sizes */
+@media (max-width: 640px) {
+
+    /* Stats cards grid - 2 per row on mobile for all pages */
+    .grid.grid-cols-1.md\:grid-cols-4,
+    .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-4 {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1rem !important;
+    }
+
+    /* Make stats cards fixed size on mobile - no auto-adjustment */
+    .grid.grid-cols-1.md\:grid-cols-4>div,
+    .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-4>div {
+        padding: 1rem !important;
+        height: 120px !important;
+        /* Fixed height instead of min-height */
+        width: 100% !important;
+        /* Fixed width */
+        display: flex !important;
+        align-items: center !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+        /* Prevent content overflow */
+    }
+
+    /* Ensure the inner flex container is fixed */
+    .grid.grid-cols-1.md\:grid-cols-4 .flex.items-center,
+    .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-4 .flex.items-center {
+        gap: 0.75rem !important;
+        width: 100% !important;
+        height: 100% !important;
+        flex-shrink: 0 !important;
+    }
+
+    /* Fixed text sizes - no responsive scaling */
+    .grid.grid-cols-1.md\:grid-cols-4 .text-2xl,
+    .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-4 .text-2xl {
+        font-size: 1.5rem !important;
+        line-height: 1.2 !important;
+        white-space: nowrap !important;
+        /* Prevent text wrapping */
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    .grid.grid-cols-1.md\:grid-cols-4 .text-sm,
+    .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-4 .text-sm {
+        font-size: 0.75rem !important;
+        line-height: 1.3 !important;
+        white-space: nowrap !important;
+        /* Prevent text wrapping */
+        overflow: hidden !important;
+        text-overflow: ellipsis !important;
+    }
+
+    /* Fixed icon containers - ensure proper centering */
+    .grid.grid-cols-1.md\:grid-cols-4 .p-3,
+    .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-4 .p-3 {
+        padding: 0.5rem !important;
+        width: 2.5rem !important;
+        height: 2.5rem !important;
+        flex-shrink: 0 !important;
+        flex-grow: 0 !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        border-radius: 0.5rem !important;
+    }
+
+    /* Ensure icons inside containers are properly centered */
+    .grid.grid-cols-1.md\:grid-cols-4 .p-3 i,
+    .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-4 .p-3 i {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+        height: 100% !important;
+        font-size: 1.25rem !important;
+        margin: 0 !important;
+    }
+
+    /* Fixed text content area */
+    .grid.grid-cols-1.md\:grid-cols-4 .ml-4,
+    .grid.grid-cols-1.md\:grid-cols-2.lg\:grid-cols-4 .ml-4 {
+        margin-left: 0.75rem !important;
+        flex: 1 !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        min-width: 0 !important;
+        /* Allow text truncation */
+        overflow: hidden !important;
+    }
+
+    /* Mobile filter buttons - Fixed size for Products and Customers pages */
+    .flex.gap-4.sm\:hidden select,
+    .flex.gap-4.sm\:hidden #categoryFilter,
+    .flex.gap-4.sm\:hidden #stockFilter,
+    .flex.gap-4.sm\:hidden #statusFilter,
+    .flex.gap-4.sm\:hidden #sortFilter {
+        width: 50% !important;
+        /* Each button takes exactly half the container */
+        min-width: 0 !important;
+        /* Allow text truncation */
+        flex: 1 !important;
+        padding: 0.5rem 0.75rem !important;
+        font-size: 0.75rem !important;
+        text-overflow: ellipsis !important;
+        overflow: hidden !important;
+        white-space: nowrap !important;
+        box-sizing: border-box !important;
+    }
+
+    /* Ensure the mobile filter container maintains fixed layout */
+    .flex.gap-4.sm\:hidden {
+        gap: 0.5rem !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        /* Prevent wrapping */
+    }
+
+    /* Target specific filter containers in Products and Customers pages */
+    .flex.flex-col.sm\:flex-row.gap-4.flex-1 .flex.gap-4.sm\:hidden {
+        margin-top: 0.5rem !important;
+        width: 100% !important;
+    }
+}
+
+/* Modal scrolling behavior */
+.modal-open {
+    overflow: hidden !important;
+    height: 100vh !important;
+}
+
+/* Ensure modal content can scroll */
+.modal-content-scrollable {
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+/* Custom scrollbar for modal content */
+.modal-content-scrollable::-webkit-scrollbar {
+    width: 6px;
+}
+
+.modal-content-scrollable::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.modal-content-scrollable::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.modal-content-scrollable::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Dark mode scrollbar */
+.dark .modal-content-scrollable::-webkit-scrollbar-track {
+    background: #2a2a2a;
+}
+
+.dark .modal-content-scrollable::-webkit-scrollbar-thumb {
+    background: #4a4a4a;
+}
+
+.dark .modal-content-scrollable::-webkit-scrollbar-thumb:hover {
+    background: #5a5a5a;
+}
+
+/* Prevent modal backdrop from scrolling */
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* Ensure modal container centers properly without page scroll */
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    overflow: hidden;
+}
+
+/* Modal dialog positioning */
+.modal-dialog {
+    max-height: 90vh;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Modal body should be scrollable */
+.modal-body {
+    overflow-y: auto;
+    max-height: calc(90vh - 120px);
+    /* Account for header and footer */
+}

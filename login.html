@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Clothes4U Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/auth-and-info-pages.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/tailwind-config.js"></script>
+</head>
+
+<body class="animated-bg">
+
+    <!-- Login Container -->
+    <div class="main-container">
+
+        <!-- Logo Section -->
+        <div class="text-center mb-8 fade-in">
+            <div class="logo-container mb-4">
+                <div class="flex items-center space-x-3">
+                    <div class="logo-icon">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Adobe%20Express%20-%20file%20%281%29-jApjl3BbI6pLPo8XO5wEXkqkMv7Sud.png"
+                            alt="Clothes4U Logo" class="logo-image">
+                    </div>
+                    <div class="flex items-end">
+                        <span class="logo-text-main text-white">Clothes4U</span>
+                        <span class="logo-text-sub text-gray-300">Admin</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Login Form -->
+        <div
+            class="form-container bg-white bg-opacity-95 backdrop-blur-lg rounded-2xl p-6 sm:p-8 shadow-2xl fade-in fade-in-delay-1">
+
+            <!-- Form Header -->
+            <div class="text-center mb-8">
+                <h2 class="text-2xl sm:text-3xl font-bold text-gray-900 mb-2">Welcome Back</h2>
+                <p class="text-gray-600">Sign in to access your dashboard</p>
+            </div>
+
+            <!-- Demo Credentials Notice -->
+            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+                <div class="flex items-start">
+                    <i class="ph ph-info text-blue-600 mt-0.5 mr-3 text-lg"></i>
+                    <div class="text-sm">
+                        <p class="font-medium text-blue-900 mb-1">Demo Credentials:</p>
+                        <p class="text-blue-700">Email: admin@clothes4u.com</p>
+                        <p class="text-blue-700">Password: admin123</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Login Form -->
+            <form id="loginForm" class="space-y-6">
+
+                <!-- Email Field -->
+                <div class="fade-in fade-in-delay-2">
+                    <label for="email" class="block text-sm font-medium text-gray-700 mb-2">
+                        Email Address
+                    </label>
+                    <div class="relative">
+                        <input type="email" id="email" name="email"
+                            class="input-field w-full px-4 py-3 pl-12 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                            placeholder="Enter your email" value="admin@clothes4u.com" required>
+                        <i
+                            class="ph ph-envelope absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg"></i>
+                    </div>
+                </div>
+
+                <!-- Password Field -->
+                <div class="fade-in fade-in-delay-3">
+                    <label for="password" class="block text-sm font-medium text-gray-700 mb-2">
+                        Password
+                    </label>
+                    <div class="relative">
+                        <input type="password" id="password" name="password"
+                            class="input-field w-full px-4 py-3 pl-12 pr-12 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                            placeholder="Enter your password" value="admin123" required>
+                        <i
+                            class="ph ph-lock absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 text-lg"></i>
+                        <button type="button" id="togglePassword"
+                            class="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-primary-600 focus:outline-none transition-colors">
+                            <i class="ph ph-eye text-lg"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Remember Me & Forgot Password -->
+                <div class="flex items-center justify-between fade-in fade-in-delay-3">
+                    <label class="flex items-center">
+                        <input type="checkbox" id="remember"
+                            class="w-4 h-4 bg-gray-100 border-gray-300 rounded focus:ring-primary-500 focus:ring-2">
+                        <span class="ml-2 text-sm text-gray-700">Remember me</span>
+                    </label>
+                    <a href="forgot-password.html"
+                        class="text-sm text-primary-600 hover:text-primary-700 transition-colors flex items-center">
+                        <i class="ph ph-question mr-1"></i>
+                        Forgot password?
+                    </a>
+                </div>
+
+                <!-- Error Message -->
+                <div id="errorMessage"
+                    class="hidden bg-red-50 border border-red-200 text-red-800 px-4 py-3 rounded-lg text-sm">
+                    <div class="flex items-center">
+                        <i class="ph ph-warning-circle mr-2 text-lg"></i>
+                        <span id="errorText">Invalid email or password</span>
+                    </div>
+                </div>
+
+                <!-- Success Message -->
+                <div id="successMessage"
+                    class="hidden bg-green-50 border border-green-200 text-green-800 px-4 py-3 rounded-lg text-sm">
+                    <div class="flex items-center">
+                        <i class="ph ph-check-circle mr-2 text-lg"></i>
+                        <span>Login successful! Redirecting...</span>
+                    </div>
+                </div>
+
+                <!-- Login Button -->
+                <button type="submit" id="loginBtn"
+                    class="login-btn w-full py-3 px-6 text-white font-medium text-lg rounded-lg transition-all duration-300 fade-in fade-in-delay-3">
+                    <span id="loginBtnText">
+                        <i class="ph ph-sign-in mr-2"></i>
+                        Sign In
+                    </span>
+                    <span id="loginLoader" class="hidden">
+                        <i class="ph ph-spinner ph-spin mr-2"></i>
+                        Signing In...
+                    </span>
+                </button>
+
+            </form>
+
+            <!-- Additional Options -->
+            <div class="mt-6 pt-6 border-t border-gray-200 fade-in fade-in-delay-3">
+                <div class="text-center">
+                    <p class="text-sm text-gray-600 mb-4">Need help accessing your account?</p>
+                    <div class="flex justify-center space-x-4">
+                        <button id="contactSupportBtn"
+                            class="flex items-center text-sm text-primary-600 hover:text-primary-700 transition-colors">
+                            <i class="ph ph-headset mr-1"></i>
+                            Contact Support
+                        </button>
+                        <button id="userGuideBtn"
+                            class="flex items-center text-sm text-primary-600 hover:text-primary-700 transition-colors">
+                            <i class="ph ph-book mr-1"></i>
+                            User Guide
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center mt-8 fade-in fade-in-delay-3">
+            <p class="text-gray-400 text-sm flex items-center justify-center">
+                <i class="ph ph-copyright mr-1"></i>
+                2026 Clothes4U. All rights reserved.
+            </p>
+            <div class="flex items-center justify-center mt-2 space-x-4 text-gray-500">
+                <a href="privacy.html" class="hover:text-white transition-colors flex items-center text-sm">
+                    <i class="ph ph-shield-check mr-1"></i>
+                    Privacy
+                </a>
+                <a href="terms.html" class="hover:text-white transition-colors flex items-center text-sm">
+                    <i class="ph ph-file-text mr-1"></i>
+                    Terms
+                </a>
+                <a href="help.html" class="hover:text-white transition-colors flex items-center text-sm">
+                    <i class="ph ph-lifebuoy mr-1"></i>
+                    Help
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Notification Toast -->
+    <div id="notification"
+        class="notification hide fixed top-4 right-4 bg-white border border-gray-200 rounded-lg shadow-lg p-4 z-50 max-w-sm">
+        <div class="flex items-center">
+            <div id="notificationIcon" class="mr-3"></div>
+            <div>
+                <p id="notificationTitle" class="font-medium text-gray-900"></p>
+                <p id="notificationMessage" class="text-sm text-gray-600"></p>
+            </div>
+            <button id="closeNotification" class="ml-4 text-gray-400 hover:text-gray-600">
+                <i class="ph ph-x"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Contact Support Modal -->
+    <div id="contactSupportModal" class="modal">
+        <div class="modal-content">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold text-gray-900">Contact Support</h3>
+                <button class="close-modal text-gray-400 hover:text-gray-600">
+                    <i class="ph ph-x text-xl"></i>
+                </button>
+            </div>
+            <div class="space-y-4">
+                <p class="text-gray-600">Our support team is here to help you with any issues or questions you may have.
+                </p>
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <div class="flex items-center mb-3">
+                        <i class="ph ph-envelope text-primary-600 mr-2 text-lg"></i>
+                        <h4 class="font-medium">Email Support</h4>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-2">For general inquiries and account issues:</p>
+                    <a href="mailto:support@clothes4u.com"
+                        class="text-primary-600 hover:underline">support@clothes4u.com</a>
+                </div>
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <div class="flex items-center mb-3">
+                        <i class="ph ph-phone text-primary-600 mr-2 text-lg"></i>
+                        <h4 class="font-medium">Phone Support</h4>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-2">Available Monday-Friday, 9am-5pm EST:</p>
+                    <a href="tel:+18005551234" class="text-primary-600 hover:underline">+1 (800) 555-1234</a>
+                </div>
+
+                <div class="bg-gray-50 p-4 rounded-lg">
+                    <div class="flex items-center mb-3">
+                        <i class="ph ph-chat-centered-text text-primary-600 mr-2 text-lg"></i>
+                        <h4 class="font-medium">Live Chat</h4>
+                    </div>
+                    <p class="text-sm text-gray-600 mb-2">For immediate assistance:</p>
+                    <button id="startChatBtn"
+                        class="text-white bg-primary-600 hover:bg-primary-700 px-4 py-2 rounded-md text-sm transition-colors">
+                        Start Live Chat
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Guide Modal -->
+    <div id="userGuideModal" class="modal">
+        <div class="modal-content">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold text-gray-900">User Guide</h3>
+                <button class="close-modal text-gray-400 hover:text-gray-600">
+                    <i class="ph ph-x text-xl"></i>
+                </button>
+            </div>
+            <div class="space-y-4">
+                <p class="text-gray-600">Welcome to the Clothes4U Admin Panel. Here's a quick guide to help you get
+                    started:</p>
+
+                <div class="space-y-3">
+                    <div class="bg-gray-50 p-3 rounded-lg">
+                        <div class="flex items-center">
+                            <div class="bg-primary-100 rounded-full p-2 mr-3">
+                                <i class="ph ph-sign-in text-primary-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-900">Logging In</h4>
+                                <p class="text-sm text-gray-600">Use your admin credentials to access the dashboard.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 p-3 rounded-lg">
+                        <div class="flex items-center">
+                            <div class="bg-primary-100 rounded-full p-2 mr-3">
+                                <i class="ph ph-gauge text-primary-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-900">Dashboard</h4>
+                                <p class="text-sm text-gray-600">View key metrics and performance indicators.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 p-3 rounded-lg">
+                        <div class="flex items-center">
+                            <div class="bg-primary-100 rounded-full p-2 mr-3">
+                                <i class="ph ph-shopping-bag text-primary-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-900">Products</h4>
+                                <p class="text-sm text-gray-600">Manage your inventory and product listings.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-50 p-3 rounded-lg">
+                        <div class="flex items-center">
+                            <div class="bg-primary-100 rounded-full p-2 mr-3">
+                                <i class="ph ph-users text-primary-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-gray-900">Customers</h4>
+                                <p class="text-sm text-gray-600">View and manage customer accounts and orders.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="text-center mt-4">
+                    <a href="help.html" class="text-primary-600 hover:text-primary-700 font-medium">
+                        View Full Documentation
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/login.js"></script>
+</body>
+
+</html>

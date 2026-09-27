@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="en" class="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Clothes4U Admin</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="assets/js/tailwind-config.js"></script>
+
+</head>
+
+<body class="bg-gray-50">
+    <!-- Sidebar -->
+    <div id="sidebar"
+        class="fixed inset-y-0 left-0 z-60 w-64 bg-white shadow-xl sidebar-transition transform -translate-x-full lg:translate-x-0 dark:bg-[#1e1e1e] dark:border-r dark:border-[#2a2a2a] group sidebar-mobile-position"
+        data-collapsible="offcanvas">
+        <div class="flex flex-col h-full sidebar-content-mobile">
+            <!-- Logo -->
+            <div class="logo-container px-4">
+                <div
+                    class="flex items-center space-x-3 group-data-[collapsible=icon]:justify-center group-data-[collapsible=icon]:space-x-0">
+                    <div class="logo-icon">
+                        <img src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Adobe%20Express%20-%20file%20%281%29-jApjl3BbI6pLPo8XO5wEXkqkMv7Sud.png"
+                            alt="Clothes4U Logo" class="logo-image">
+                    </div>
+                    <div class="logo-text-container flex items-end group-data-[collapsible=icon]:hidden">
+                        <span class="logo-text-main">Clothes4U</span>
+                        <span class="logo-text-sub">Admin</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation -->
+            <nav class="flex-1 px-4 py-6 space-y-2">
+                <a href="index.html"
+                    class="sidebar-item flex items-center px-4 py-3 text-sm font-medium text-gray-600 rounded-lg tooltip dark:text-gray-300">
+                    <i class="ph ph-house text-lg"></i>
+                    <span class="sidebar-text ml-3">Dashboard</span>
+                    <span class="tooltip-text">Dashboard</span>
+                </a>
+                <a href="products.html"
+                    class="sidebar-item active flex items-center px-4 py-3 text-sm font-medium rounded-lg tooltip">
+                    <i class="ph ph-package text-lg"></i>
+                    <span class="sidebar-text ml-3">Products</span>
+                    <span class="tooltip-text">Products</span>
+                </a>
+                <a href="add-product.html"
+                    class="sidebar-item flex items-center px-4 py-3 text-sm font-medium text-gray-600 rounded-lg tooltip dark:text-gray-300">
+                    <i class="ph ph-plus-circle text-lg"></i>
+                    <span class="sidebar-text ml-3">Add Product</span>
+                    <span class="tooltip-text">Add Product</span>
+                </a>
+                <a href="orders.html"
+                    class="sidebar-item flex items-center px-4 py-3 text-sm font-medium text-gray-600 rounded-lg tooltip dark:text-gray-300">
+                    <i class="ph ph-shopping-cart text-lg"></i>
+                    <span class="sidebar-text ml-3">Orders</span>
+                    <span class="tooltip-text">Orders</span>
+                </a>
+                <a href="customers.html"
+                    class="sidebar-item flex items-center px-4 py-3 text-sm font-medium text-gray-600 rounded-lg tooltip dark:text-gray-300">
+                    <i class="ph ph-users text-lg"></i>
+                    <span class="sidebar-text ml-3">Customers</span>
+                    <span class="tooltip-text">Customers</span>
+                </a>
+                <a href="analytics.html"
+                    class="sidebar-item flex items-center px-4 py-3 text-sm font-medium text-gray-600 rounded-lg tooltip dark:text-gray-300">
+                    <i class="ph ph-chart-bar text-lg"></i>
+                    <span class="sidebar-text ml-3">Analytics</span>
+                    <span class="tooltip-text">Analytics</span>
+                </a>
+                <a href="settings.html"
+                    class="sidebar-item flex items-center px-4 py-3 text-sm font-medium text-gray-600 rounded-lg tooltip dark:text-gray-300">
+                    <i class="ph ph-gear text-lg"></i>
+                    <span class="sidebar-text ml-3">Settings</span>
+                    <span class="tooltip-text">Settings</span>
+                </a>
+            </nav>
+
+            <!-- Logout Button -->
+            <div class="px-4 pb-4">
+                <button id="logoutBtn"
+                    class="logout-btn w-full flex items-center px-4 py-3 text-sm font-medium text-gray-600 rounded-lg tooltip dark:text-gray-300">
+                    <i class="ph ph-sign-out text-lg"></i>
+                    <span class="sidebar-text ml-3">Logout</span>
+                    <span class="tooltip-text">Logout</span>
+                </button>
+            </div>
+
+            <!-- User Profile -->
+            <div class="user-profile p-4 border-t border-gray-200 dark:border-[#2a2a2a]">
+                <div class="flex items-center">
+                    <div class="w-10 h-10 bg-primary-600 rounded-full flex items-center justify-center">
+                        <i class="ph ph-user text-white"></i>
+                    </div>
+                    <div class="ml-3 sidebar-user-info">
+                        <p class="text-sm font-medium text-gray-900 dark:text-gray-100">Admin User</p>
+                        <p class="text-xs text-gray-500">admin@clothes4u.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile sidebar overlay -->
+    <div id="sidebar-overlay" class="fixed inset-0 z-55 bg-black bg-opacity-50 lg:hidden hidden"></div>
+
+    <!-- Main Content -->
+    <div id="main-content" class="lg:ml-64 sidebar-transition">
+        <!-- Top Header -->
+        <header
+            class="fixed top-0 right-0 left-0 lg:left-64 z-50 bg-white shadow-sm border-b border-gray-200 sidebar-transition dark:bg-[#1e1e1e] dark:border-[#2a2a2a]">
+            <div class="flex items-center justify-between px-4 py-4 sm:px-6 lg:px-8 h-16">
+                <div class="flex items-center">
+                    <!-- Mobile toggle button -->
+                    <button id="sidebar-toggle-mobile"
+                        class="lg:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-[#2a2a2a] dark:hover:text-gray-100">
+                        <i class="ph ph-sidebar-simple w-6 h-6 text-xl"></i>
+                    </button>
+                    <!-- Desktop toggle button -->
+                    <button id="sidebar-toggle-desktop"
+                        class="hidden lg:block p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100 mr-4 dark:text-gray-300 dark:hover:bg-[#2a2a2a] dark:hover:text-gray-100">
+                        <i class="ph ph-sidebar-simple w-6 h-6 text-xl"></i>
+                    </button>
+                    <h1 class="ml-4 lg:ml-0 text-2xl font-bold text-gray-900 dark:text-gray-100">Products</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <!-- Theme Toggle Button -->
+                    <button id="theme-toggle"
+                        class="p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg dark:text-gray-300 dark:hover:bg-[#2a2a2a] dark:hover:text-gray-100">
+                        <i id="theme-toggle-icon" class="ph ph-sun theme-toggle-icon text-lg hidden dark:block"></i>
+                        <i id="theme-toggle-icon-dark"
+                            class="ph ph-moon theme-toggle-icon text-lg block dark:hidden"></i>
+                    </button>
+                    <!-- Simplified Notification Dropdown -->
+                    <div class="relative">
+                        <button id="notification-btn"
+                            class="relative p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg dark:text-gray-300 dark:hover:bg-[#2a2a2a] dark:hover:text-gray-100">
+                            <i class="ph ph-bell w-5 h-5 text-lg"></i>
+                            <span id="notification-count"
+                                class="notification-badge absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full"></span>
+                        </button>
+
+                        <!-- Notification Dropdown -->
+                        <div id="notification-dropdown"
+                            class="notification-dropdown absolute right-0 mt-2 w-80 bg-white rounded-xl shadow-lg border border-gray-200 z-50 dark:bg-[#1e1e1e] dark:border-[#2a2a2a]">
+
+                            <!-- Header -->
+                            <div
+                                class="flex items-center justify-between p-4 border-b border-gray-200 dark:border-[#2a2a2a]">
+                                <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Notifications</h3>
+                                <span
+                                    class="px-2 py-1 text-xs font-medium bg-red-100 text-red-800 rounded-full dark:bg-[rgba(220,38,38,0.2)] dark:text-red-400">3
+                                    new</span>
+                            </div>
+
+                            <!-- Notification List -->
+                            <div class="max-h-80 overflow-y-auto">
+                                <!-- Order Notification -->
+                                <div
+                                    class="notification-item p-4 border-b border-gray-100 dark:border-[#2a2a2a] cursor-pointer">
+                                    <div class="flex items-start space-x-3">
+                                        <div
+                                            class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center dark:bg-[rgba(22,163,74,0.2)]">
+                                            <i class="ph ph-shopping-cart text-green-600 text-sm"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-sm font-medium text-gray-900 dark:text-gray-100">New Order
+                                                #ORD-1247</p>
+                                            <p class="text-xs text-gray-500 mt-1">John Doe ordered 2 items • Rs 129.99</p>
+                                            <p class="text-xs text-gray-400 mt-1">2 minutes ago</p>
+                                        </div>
+                                        <span class="w-2 h-2 bg-red-500 rounded-full mt-2"></span>
+                                    </div>
+                                </div>
+
+                                <!-- Low Stock Alert -->
+                                <div
+                                    class="notification-item p-4 border-b border-gray-100 dark:border-[#2a2a2a] cursor-pointer">
+                                    <div class="flex items-start space-x-3">
+                                        <div
+                                            class="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center dark:bg-[rgba(202,138,4,0.2)]">
+                                            <i class="ph ph-warning text-yellow-600 text-sm"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-sm font-medium text-gray-900 dark:text-gray-100">Low Stock
+                                                Alert</p>
+                                            <p class="text-xs text-gray-500 mt-1">Classic T-Shirt has only 3 items left
+                                            </p>
+                                            <p class="text-xs text-gray-400 mt-1">15 minutes ago</p>
+                                        </div>
+                                        <span class="w-2 h-2 bg-red-500 rounded-full mt-2"></span>
+                                    </div>
+                                </div>
+
+                                <!-- New Customer -->
+                                <div
+                                    class="notification-item p-4 border-b border-gray-100 dark:border-[#2a2a2a] cursor-pointer">
+                                    <div class="flex items-start space-x-3">
+                                        <div
+                                            class="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center dark:bg-[rgba(37,99,235,0.2)]">
+                                            <i class="ph ph-user-plus text-blue-600 text-sm"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-sm font-medium text-gray-900 dark:text-gray-100">New Customer
+                                            </p>
+                                            <p class="text-xs text-gray-500 mt-1">Sarah Wilson just registered</p>
+                                            <p class="text-xs text-gray-400 mt-1">1 hour ago</p>
+                                        </div>
+                                        <span class="w-2 h-2 bg-red-500 rounded-full mt-2"></span>
+                                    </div>
+                                </div>
+
+                                <!-- Payment Received -->
+                                <div class="notification-item p-4 cursor-pointer">
+                                    <div class="flex items-start space-x-3">
+                                        <div
+                                            class="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center dark:bg-[rgba(22,163,74,0.2)]">
+                                            <i class="ph ph-currency-inr text-green-600 text-sm"></i>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="text-sm font-medium text-gray-900 dark:text-gray-100">Payment
+                                                Received</p>
+                                            <p class="text-xs text-gray-500 mt-1">Rs 89.99 for Order #ORD-1246</p>
+                                            <p class="text-xs text-gray-400 mt-1">2 hours ago</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Footer -->
+                            <div class="p-4 border-t border-gray-200 dark:border-[#2a2a2a]">
+                                <a href="notifications.html"
+                                    class="block w-full text-center text-sm text-primary-600 hover:text-primary-700 font-medium py-2 hover:bg-gray-50 rounded-lg transition-colors dark:hover:bg-[#2a2a2a]">
+                                    View All Notifications
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="add-product.html"
+                        class="mobile-header-btn bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition-colors font-medium"
+                        data-tooltip="Add Product">
+                        <i class="ph ph-plus mr-2"></i>
+                        <span class="btn-text">Add Product</span>
+                    </a>
+                </div>
+            </div>
+        </header>
+        <div id="header-spacer"></div>
+
+        <!-- Products Content -->
+        <main class="p-4 sm:p-6 lg:p-8">
+            <!-- Stats Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-xl border border-gray-200 card-hover dark:border-[#2a2a2a]">
+                    <div class="flex items-center">
+                        <div class="p-3 bg-blue-100 rounded-lg dark:bg-[rgba(37,99,235,0.2)]">
+                            <i class="ph ph-package text-blue-600"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Total Products</p>
+                            <p class="text-2xl font-bold text-gray-900 dark:text-gray-100">156</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-gray-200 card-hover dark:border-[#2a2a2a]">
+                    <div class="flex items-center">
+                        <div class="p-3 bg-green-100 rounded-lg dark:bg-[rgba(22,163,74,0.2)]">
+                            <i class="ph ph-check-circle text-green-600"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm text-gray-600 dark:text-gray-400">In Stock</p>
+                            <p class="text-2xl font-bold text-gray-900 dark:text-gray-100">142</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-gray-200 card-hover dark:border-[#2a2a2a]">
+                    <div class="flex items-center">
+                        <div class="p-3 bg-yellow-100 rounded-lg dark:bg-[rgba(202,138,4,0.2)]">
+                            <i class="ph ph-warning text-yellow-600"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Low Stock</p>
+                            <p class="text-2xl font-bold text-gray-900 dark:text-gray-100">8</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-gray-200 card-hover dark:border-[#2a2a2a]">
+                    <div class="flex items-center">
+                        <div class="p-3 bg-red-100 rounded-lg dark:bg-[rgba(220,38,38,0.2)]">
+                            <i class="ph ph-x-circle text-red-600"></i>
+                        </div>
+                        <div class="ml-4">
+                            <p class="text-sm text-gray-600 dark:text-gray-400">Out of Stock</p>
+                            <p class="text-2xl font-bold text-gray-900 dark:text-gray-100">6</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="bg-white rounded-xl border border-gray-200 p-6 mb-8 dark:border-[#2a2a2a]">
+                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+                    <div class="flex flex-col sm:flex-row gap-4 flex-1">
+                        <!-- Search -->
+                        <div class="relative flex-1 max-w-md">
+                            <input type="text" id="searchInput" placeholder="Search products..."
+                                class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-100 dark:placeholder-gray-400">
+                            <i
+                                class="ph ph-magnifying-glass absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"></i>
+                        </div>
+
+                        <!-- Filter Buttons Row - Mobile Only -->
+                        <div class="flex gap-4 sm:hidden">
+                            <!-- Category Filter -->
+                            <select id="categoryFilter"
+                                class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-100">
+                                <option value="">All Categories</option>
+                                <option value="t-shirts">T-Shirts</option>
+                                <option value="pants">Pants</option>
+                                <option value="jackets">Jackets</option>
+                                <option value="accessories">Accessories</option>
+                                <option value="shoes">Shoes</option>
+                                <option value="dresses">Dresses</option>
+                            </select>
+
+                            <!-- Stock Filter -->
+                            <select id="stockFilter"
+                                class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-100">
+                                <option value="">All Stock</option>
+                                <option value="in-stock">In Stock</option>
+                                <option value="low-stock">Low Stock</option>
+                                <option value="out-of-stock">Out of Stock</option>
+                            </select>
+                        </div>
+
+                        <!-- Desktop Filter Buttons -->
+                        <div class="hidden sm:flex gap-4">
+                            <!-- Category Filter -->
+                            <select id="categoryFilterDesktop"
+                                class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-100">
+                                <option value="">All Categories</option>
+                                <option value="t-shirts">T-Shirts</option>
+                                <option value="pants">Pants</option>
+                                <option value="jackets">Jackets</option>
+                                <option value="accessories">Accessories</option>
+                                <option value="shoes">Shoes</option>
+                                <option value="dresses">Dresses</option>
+                            </select>
+
+                            <!-- Stock Filter -->
+                            <select id="stockFilterDesktop"
+                                class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-100">
+                                <option value="">All Stock</option>
+                                <option value="in-stock">In Stock</option>
+                                <option value="low-stock">Low Stock</option>
+                                <option value="out-of-stock">Out of Stock</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- View Toggle -->
+                    <div class="flex items-center bg-gray-100 rounded-lg p-1 dark:bg-[#2a2a2a]">
+                        <button id="gridView"
+                            class="view-toggle active px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            <i class="ph ph-squares-four mr-1"></i>
+                            Grid
+                        </button>
+                        <button id="listView"
+                            class="view-toggle px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            <i class="ph ph-list mr-1"></i>
+                            List
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div id="productsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Products will be loaded here -->
+            </div>
+
+            <!-- Products List (Hidden by default) -->
+            <div id="productsList"
+                class="hidden bg-white rounded-xl border border-gray-200 overflow-hidden dark:border-[#2a2a2a]">
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead class="bg-gray-50 border-b border-gray-200 dark:bg-[#2a2a2a] dark:border-[#3a3a3a]">
+                            <tr>
+                                <th
+                                    class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400">
+                                    Product</th>
+                                <th
+                                    class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400">
+                                    Category</th>
+                                <th
+                                    class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400">
+                                    Price</th>
+                                <th
+                                    class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400">
+                                    Stock</th>
+                                <th
+                                    class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400">
+                                    Status</th>
+                                <th
+                                    class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-400">
+                                    Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productsTableBody"
+                            class="bg-white divide-y divide-gray-200 dark:bg-[#1e1e1e] dark:divide-[#2a2a2a]">
+                            <!-- Products will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="flex items-center justify-between mt-8">
+                <div class="text-sm text-gray-700 dark:text-gray-300">
+                    Showing <span class="font-medium">1</span> to <span class="font-medium">12</span> of <span
+                        class="font-medium">156</span> results
+                </div>
+                <div class="flex items-center space-x-2">
+                    <button
+                        class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-300 dark:hover:bg-[#333333]">
+                        Previous
+                    </button>
+                    <button
+                        class="px-3 py-2 text-sm font-medium text-white bg-primary-600 border border-primary-600 rounded-lg">
+                        1
+                    </button>
+                    <button
+                        class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-300 dark:hover:bg-[#333333]">
+                        2
+                    </button>
+                    <button
+                        class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-300 dark:hover:bg-[#333333]">
+                        3
+                    </button>
+                    <button
+                        class="px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-300 dark:hover:bg-[#333333]">
+                        Next
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Edit Product Modal -->
+    <div id="editModal" class="fixed inset-0 z-50 hidden">
+        <div class="modal-backdrop fixed inset-0 bg-black bg-opacity-50 transition-opacity"></div>
+        <div class="fixed inset-0 z-10 overflow-y-auto">
+            <div class="flex min-h-full items-center justify-center p-4">
+                <div
+                    class="modal bg-white rounded-xl shadow-2xl w-full max-w-2xl transform transition-all dark:bg-[#1e1e1e]">
+                    <div class="px-6 py-4 border-b border-gray-200 dark:border-[#2a2a2a]">
+                        <div class="flex items-center justify-between">
+                            <h3 class="text-lg font-semibold text-gray-900 dark:text-gray-100">Edit Product</h3>
+                            <button onclick="closeEditModal()"
+                                class="text-gray-400 hover:text-gray-600 transition-colors dark:hover:text-gray-300">
+                                <i class="ph ph-x text-xl"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <form id="editProductForm" class="p-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Product Images -->
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-medium text-gray-700 mb-2 dark:text-gray-300">Product
+                                    Images</label>
+                                <div class="mb-4">
+                                    <div id="productImagesContainer" class="flex flex-wrap gap-3">
+                                        <div class="product-image-item">
+                                            <img id="editProductImage" src="/placeholder.svg" alt="Product"
+                                                class="w-20 h-20 rounded-lg object-cover border border-gray-200 dark:border-[#3a3a3a]">
+                                        </div>
+                                        <!-- Additional images will be added here -->
+                                    </div>
+                                </div>
+                                <div class="flex flex-col sm:flex-row gap-2">
+                                    <input type="file" id="editImageInput" accept="image/*" class="hidden">
+                                    <input type="file" id="addNewImageInput" accept="image/*" class="hidden">
+                                    <button type="button" onclick="document.getElementById('editImageInput').click()"
+                                        class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors dark:bg-[#2a2a2a] dark:text-gray-300 dark:hover:bg-[#333333]">
+                                        <i class="ph ph-pencil mr-1"></i>
+                                        Change Image
+                                    </button>
+                                    <button type="button" onclick="document.getElementById('addNewImageInput').click()"
+                                        class="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors">
+                                        <i class="ph ph-plus mr-1"></i>
+                                        Add New Image
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Product Name -->
+                            <div>
+                                <label for="editProductName"
+                                    class="block text-sm font-medium text-gray-700 mb-2 dark:text-gray-300">Product
+                                    Name</label>
+                                <input type="text" id="editProductName"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-100">
+                            </div>
+
+                            <!-- Category -->
+                            <div>
+                                <label for="editProductCategory"
+                                    class="block text-sm font-medium text-gray-700 mb-2 dark:text-gray-300">Category</label>
+                                <select id="editProductCategory"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-100">
+                                    <option value="t-shirts">T-Shirts</option>
+                                    <option value="pants">Pants</option>
+                                    <option value="jackets">Jackets</option>
+                                    <option value="accessories">Accessories</option>
+                                    <option value="shoes">Shoes</option>
+                                    <option value="dresses">Dresses</option>
+                                </select>
+                            </div>
+
+                            <!-- Price -->
+                            <div>
+                                <label for="editProductPrice"
+                                    class="block text-sm font-medium text-gray-700 mb-2 dark:text-gray-300">Price
+                                    (Rs)</label>
+                                <input type="number" id="editProductPrice" step="0.01"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-100">
+                            </div>
+
+                            <!-- Original Price -->
+                            <div>
+                                <label for="editProductOriginalPrice"
+                                    class="block text-sm font-medium text-gray-700 mb-2 dark:text-gray-300">Original
+                                    Price (Rs)</label>
+                                <input type="number" id="editProductOriginalPrice" step="0.01" placeholder="Optional"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-100 dark:placeholder-gray-400">
+                            </div>
+
+                            <!-- Stock -->
+                            <div>
+                                <label for="editProductStock"
+                                    class="block text-sm font-medium text-gray-700 mb-2 dark:text-gray-300">Stock
+                                    Quantity</label>
+                                <input type="number" id="editProductStock"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-100">
+                            </div>
+
+                            <!-- Status -->
+                            <div>
+                                <label for="editProductStatus"
+                                    class="block text-sm font-medium text-gray-700 mb-2 dark:text-gray-300">Status</label>
+                                <select id="editProductStatus"
+                                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-100">
+                                    <option value="in-stock">In Stock</option>
+                                    <option value="low-stock">Low Stock</option>
+                                    <option value="out-of-stock">Out of Stock</option>
+                                </select>
+                            </div>
+
+                            <!-- Sizes -->
+                            <div class="md:col-span-2">
+                                <label class="block text-sm font-medium text-gray-700 mb-2 dark:text-gray-300">Available
+                                    Sizes</label>
+                                <div id="editSizesContainer" class="flex flex-wrap gap-3">
+                                    <!-- Sizes will be populated here -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <div
+                            class="flex justify-end space-x-3 mt-6 pt-6 border-t border-gray-200 dark:border-[#2a2a2a]">
+                            <button type="button" onclick="closeEditModal()"
+                                class="px-4 py-2 text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors dark:bg-[#2a2a2a] dark:text-gray-300 dark:hover:bg-[#333333]">
+                                Cancel
+                            </button>
+                            <button type="submit"
+                                class="px-4 py-2 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-colors">
+                                Save Changes
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Confirmation Modal -->
+    <div id="deleteModal" class="fixed inset-0 z-50 hidden">
+        <div class="modal-backdrop fixed inset-0 bg-black bg-opacity-50 transition-opacity"></div>
+        <div class="fixed inset-0 z-10 overflow-y-auto">
+            <div class="flex min-h-full items-center justify-center p-4">
+                <div
+                    class="modal bg-white rounded-xl shadow-2xl w-full max-w-md transform transition-all dark:bg-[#1e1e1e]">
+                    <div class="p-6">
+                        <div
+                            class="flex items-center justify-center w-12 h-12 mx-auto bg-red-100 rounded-full mb-4 dark:bg-[rgba(220,38,38,0.2)]">
+                            <i class="ph ph-warning text-red-600 text-xl"></i>
+                        </div>
+
+                        <h3 class="text-lg font-semibold text-gray-900 text-center mb-2 dark:text-gray-100">Delete
+                            Product</h3>
+                        <p class="text-gray-600 text-center mb-6 dark:text-gray-400">
+                            Are you sure you want to delete "<span id="deleteProductName" class="font-medium"></span>"?
+                            This action cannot be undone.
+                        </p>
+
+                        <div class="flex justify-center space-x-3">
+                            <button onclick="closeDeleteModal()"
+                                class="px-4 py-2 text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 transition-colors dark:bg-[#2a2a2a] dark:text-gray-300 dark:hover:bg-[#333333]">
+                                Cancel
+                            </button>
+                            <button onclick="confirmDelete()"
+                                class="px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors">
+                                Delete Product
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Logout Confirmation Modal -->
+    <div id="logoutModal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+        <div class="modal-backdrop fixed inset-0 bg-black bg-opacity-50 transition-opacity"></div>
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <div
+                class="inline-block align-bottom bg-white rounded-xl text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-md sm:w-full dark:bg-[#1e1e1e]">
+                <div class="bg-white px-6 pt-6 pb-4 dark:bg-[#1e1e1e]">
+                    <div
+                        class="flex items-center justify-center w-12 h-12 mx-auto bg-red-100 rounded-full mb-4 dark:bg-[rgba(220,38,38,0.2)]">
+                        <i class="ph ph-sign-out text-red-600 text-xl"></i>
+                    </div>
+
+                    <div class="text-center">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2 dark:text-gray-100">Confirm Logout</h3>
+                        <p class="text-gray-600 mb-6 dark:text-gray-400">
+                            Are you sure you want to logout? You will be redirected to the login page.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 px-6 py-4 flex flex-col sm:flex-row gap-3 sm:gap-4 dark:bg-[#1a1a1a]">
+                    <button id="cancelLogout"
+                        class="flex-1 px-4 py-2 text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors font-medium dark:bg-[#2a2a2a] dark:border-[#3a3a3a] dark:text-gray-300 dark:hover:bg-[#333333]">
+                        Cancel
+                    </button>
+                    <button id="confirmLogout"
+                        class="flex-1 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors font-medium">
+                        <i class="ph ph-sign-out mr-2"></i>
+                        Logout
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/products.js"></script>
+    <script type="text/plain">
+            {
+                id: 1,
+                name: 'Classic T-Shirt',
+                category: 't-shirts',
+                price: 29.99,
+                originalPrice: 34.99,
+                stock: 45,
+                status: 'in-stock',
+                image: 'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=500&q=80',
+                sizes: ['S', 'M', 'L', 'XL']
+            },
+            {
+                id: 2,
+                name: 'Denim Jeans',
+                category: 'pants',
+                price: 79.99,
+                stock: 23,
+                status: 'in-stock',
+                image: 'https://images.unsplash.com/photo-1542272604-787c3835535d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=500&q=80',
+                sizes: ['28', '30', '32', '34', '36']
+            },
+            {
+                id: 3,
+                name: 'Winter Jacket',
+                category: 'jackets',
+                price: 149.99,
+                stock: 8,
+                status: 'low-stock',
+                image: 'https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=500&q=80',
+                sizes: ['S', 'M', 'L', 'XL', 'XXL']
+            },
+            {
+                id: 4,
+                name: 'Running Shoes',
+                category: 'shoes',
+                price: 119.99,
+                stock: 0,
+                status: 'out-of-stock',
+                image: 'https://images.unsplash.com/photo-1560769629-975ec94e6a86?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=500&q=80',
+                sizes: ['7', '8', '9', '10', '11', '12']
+            },
+            {
+                id: 5,
+                name: 'Summer Dress',
+                category: 'dresses',
+                price: 89.99,
+                originalPrice: 109.99,
+                stock: 15,
+                status: 'in-stock',
+                image: 'https://images.unsplash.com/photo-1612336307429-8a898d10e223?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=500&q=80',
+                sizes: ['XS', 'S', 'M', 'L']
+            },
+            {
+                id: 6,
+                name: 'Leather Belt',
+                category: 'accessories',
+                price: 39.99,
+                stock: 32,
+                status: 'in-stock',
+                image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&h=500&q=80',
+                sizes: ['S', 'M', 'L']
+            }
+        ];
+
+        let currentEditingProduct = null;
+        let currentDeletingProduct = null;
+        let productImages = []; // Array to store product images
+
+        // Initialize products page
+        document.addEventListener('DOMContentLoaded', function () {
+            renderProducts();
+            setupProductsEventListeners();
+
+            // Update document title
+            document.title = "Products - Clothes4U Admin";
+
+            // Adjust header spacer height to match header height
+            document.getElementById('header-spacer').style.height = '64px';
+
+            // Add sidebar toggle functionality
+            const sidebarToggleDesktop = document.getElementById('sidebar-toggle-desktop');
+            const sidebar = document.getElementById('sidebar');
+
+            if (sidebarToggleDesktop && sidebar) {
+                sidebarToggleDesktop.addEventListener('click', function () {
+                    const currentState = sidebar.getAttribute('data-collapsible');
+                    if (currentState === 'icon') {
+                        sidebar.setAttribute('data-collapsible', 'offcanvas');
+                    } else {
+                        sidebar.setAttribute('data-collapsible', 'icon');
+                    }
+                });
+            }
+        });
+
+        // Setup products-specific event listeners
+        function setupProductsEventListeners() {
+            // View toggle
+            document.getElementById('gridView').addEventListener('click', () => switchView('grid'));
+            document.getElementById('listView').addEventListener('click', () => switchView('list'));
+
+            // Filters - Mobile
+            document.getElementById('searchInput').addEventListener('input', filterProducts);
+            document.getElementById('categoryFilter').addEventListener('change', filterProducts);
+            document.getElementById('stockFilter').addEventListener('change', filterProducts);
+
+            // Filters - Desktop
+            document.getElementById('categoryFilterDesktop').addEventListener('change', filterProducts);
+            document.getElementById('stockFilterDesktop').addEventListener('change', filterProducts);
+
+            // Edit form submission
+            document.getElementById('editProductForm').addEventListener('submit', handleEditSubmit);
+
+            // Image input changes
+            document.getElementById('editImageInput').addEventListener('change', handleImageChange);
+            document.getElementById('addNewImageInput').addEventListener('change', handleAddNewImage);
+        }
+
+        // Render products
+        function renderProducts() {
+            renderGridView();
+            renderListView();
+        }
+
+        // Render grid view
+        function renderGridView() {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = products.map(product => `
+                <div class="product-card bg-white rounded-xl border border-gray-200 overflow-hidden dark:border-[#2a2a2a]">
+                    <div class="relative">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover">
+                        ${product.originalPrice ? `
+                            <div class="absolute top-2 left-2 bg-red-500 text-white px-2 py-1 rounded-full text-xs font-medium">
+                                ${Math.round((1 - product.price / product.originalPrice) * 100)}% OFF
+                            </div>
+                        ` : ''}
+                        ${Utils.getStatusBadge(product.status, 'absolute top-2 right-2')}
+                    </div>
+                    <div class="p-4">
+                        <h3 class="text-lg font-semibold text-gray-900 mb-2 dark:text-gray-100">${product.name}</h3>
+                        <p class="text-sm text-gray-500 mb-3 capitalize">${product.category.replace('-', ' ')}</p>
+                        
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-xl font-bold text-gray-900 dark:text-gray-100">Rs ${product.price}</span>
+                                ${product.originalPrice ? `<span class="text-sm text-gray-500 line-through">Rs ${product.originalPrice}</span>` : ''}
+                            </div>
+                            <span class="text-sm text-gray-600 dark:text-gray-400">${product.stock} in stock</span>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <p class="text-xs text-gray-500 mb-1">Available sizes:</p>
+                            <div class="flex flex-wrap gap-1">
+                                ${product.sizes.map(size => `
+                                    <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded dark:bg-[#2a2a2a] dark:text-gray-300">${size}</span>
+                                `).join('')}
+                            </div>
+                        </div>
+                        
+                        <div class="flex gap-2">
+                            <button onclick="editProduct(${product.id})" class="flex-1 bg-primary-600 text-white px-3 py-2 rounded-lg hover:bg-primary-700 transition-colors text-sm font-medium">
+                                <i class="ph ph-pencil mr-1"></i>
+                                Edit
+                            </button>
+                            <button onclick="deleteProduct(${product.id})" class="px-3 py-2 bg-red-100 text-red-600 rounded-lg hover:bg-red-200 transition-colors dark:bg-[rgba(220,38,38,0.2)] dark:hover:bg-[rgba(220,38,38,0.3)]">
+                                <i class="ph ph-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Render list view
+        function renderListView() {
+            const tbody = document.getElementById('productsTableBody');
+            tbody.innerHTML = products.map(product => `
+                <tr class="hover:bg-gray-50 dark:hover:bg-[#2a2a2a]">
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="flex items-center">
+                            <img src="${product.image}" alt="${product.name}" class="w-12 h-12 rounded-lg object-cover mr-4">
+                            <div>
+                                <div class="text-sm font-medium text-gray-900 dark:text-gray-100">${product.name}</div>
+                                <div class="text-sm text-gray-500">SKU: PRD-${String(product.id).padStart(3, '0')}</div>
+                            </div>
+                        </div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <span class="text-sm text-gray-900 capitalize dark:text-gray-100">${product.category.replace('-', ' ')}</span>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm font-medium text-gray-900 dark:text-gray-100">Rs ${product.price}</div>
+                        ${product.originalPrice ? `<div class="text-sm text-gray-500 line-through">Rs ${product.originalPrice}</div>` : ''}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        <div class="text-sm text-gray-900 dark:text-gray-100">${product.stock}</div>
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap">
+                        ${Utils.getStatusBadge(product.status)}
+                    </td>
+                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                        <button onclick="editProduct(${product.id})" class="text-primary-600 hover:text-primary-900 mr-3">
+                            <i class="ph ph-pencil"></i>
+                        </button>
+                        <button onclick="deleteProduct(${product.id})" class="text-red-600 hover:text-red-900">
+                            <i class="ph ph-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // Switch view
+        function switchView(view) {
+            const gridView = document.getElementById('gridView');
+            const listView = document.getElementById('listView');
+            const productsGrid = document.getElementById('productsGrid');
+            const productsList = document.getElementById('productsList');
+
+            if (view === 'grid') {
+                gridView.classList.add('active', 'bg-white', 'text-gray-900', 'dark:bg-[#1e1e1e]', 'dark:text-gray-100');
+                gridView.classList.remove('text-gray-600', 'dark:text-gray-400');
+                listView.classList.remove('active', 'bg-white', 'text-gray-900', 'dark:bg-[#1e1e1e]', 'dark:text-gray-100');
+                listView.classList.add('text-gray-600', 'dark:text-gray-400');
+
+                productsGrid.classList.remove('hidden');
+                productsList.classList.add('hidden');
+            } else {
+                listView.classList.add('active', 'bg-white', 'text-gray-900', 'dark:bg-[#1e1e1e]', 'dark:text-gray-100');
+                listView.classList.remove('text-gray-600', 'dark:text-gray-400');
+                gridView.classList.remove('active', 'bg-white', 'text-gray-900', 'dark:bg-[#1e1e1e]', 'dark:text-gray-100');
+                gridView.classList.add('text-gray-600', 'dark:text-gray-400');
+
+                productsList.classList.remove('hidden');
+                productsGrid.classList.add('hidden');
+            }
+        }
+
+        // Filter products
+        function filterProducts() {
+            // Implementation for filtering products
+            console.log('Filtering products...');
+        }
+
+        // Edit product
+        function editProduct(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            currentEditingProduct = product;
+
+            // Reset product images array and add the main image
+            productImages = [product.image];
+
+            // Populate form fields
+            document.getElementById('editProductName').value = product.name;
+            document.getElementById('editProductCategory').value = product.category;
+            document.getElementById('editProductPrice').value = product.price;
+            document.getElementById('editProductOriginalPrice').value = product.originalPrice || '';
+            document.getElementById('editProductStock').value = product.stock;
+            document.getElementById('editProductStatus').value = product.status;
+
+            // Populate product images
+            renderProductImages();
+
+            // Populate sizes
+            populateEditSizes(product.sizes, product.category);
+
+            // Show modal with proper scroll handling
+            openModal(document.getElementById('editModal'));
+        }
+
+        // Close edit modal
+        function closeEditModal() {
+            closeModal(document.getElementById('editModal'));
+            currentEditingProduct = null;
+            productImages = []; // Clear product images array
+        }
+
+        // Delete product
+        function deleteProduct(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            currentDeletingProduct = product;
+            document.getElementById('deleteProductName').textContent = product.name;
+            openModal(document.getElementById('deleteModal'));
+        }
+
+        // Close delete modal
+        function closeDeleteModal() {
+            closeModal(document.getElementById('deleteModal'));
+            currentDeletingProduct = null;
+        }
+
+        // Modal utility functions
+        function openModal(modal) {
+            modal.classList.remove('hidden');
+            document.body.classList.add('modal-open');
+            // Store current scroll position
+            window.modalScrollPosition = window.pageYOffset;
+            document.body.style.top = `-${window.modalScrollPosition}px`;
+            document.body.style.position = 'fixed';
+            document.body.style.width = '100%';
+        }
+
+        function closeModal(modal) {
+            modal.classList.add('hidden');
+            document.body.classList.remove('modal-open');
+            // Restore scroll position
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            window.scrollTo(0, window.modalScrollPosition || 0);
+        }
+
+        // Handle edit form submission
+        function handleEditSubmit(e) {
+            e.preventDefault();
+
+            if (!currentEditingProduct) return;
+
+            // Get form data
+            const formData = {
+                name: document.getElementById('editProductName').value,
+                category: document.getElementById('editProductCategory').value,
+                price: parseFloat(document.getElementById('editProductPrice').value),
+                originalPrice: document.getElementById('editProductOriginalPrice').value ?
+                    parseFloat(document.getElementById('editProductOriginalPrice').value) : null,
+                stock: parseInt(document.getElementById('editProductStock').value),
+                status: document.getElementById('editProductStatus').value,
+                sizes: Array.from(document.querySelectorAll('#editSizesContainer input:checked')).map(cb => cb.value),
+                image: productImages[0], // Use the first image as the main image
+                additionalImages: productImages.slice(1) // Store additional images
+            };
+
+            // Update product in array
+            const productIndex = products.findIndex(p => p.id === currentEditingProduct.id);
+            if (productIndex !== -1) {
+                products[productIndex] = { ...products[productIndex], ...formData };
+            }
+
+            // Re-render products
+            renderProducts();
+
+            // Close modal
+            closeEditModal();
+
+            // Show success message using Utils from main.js
+            Utils.showNotification('Product updated successfully!', 'success');
+        }
+
+        // Handle image change (existing image replacement)
+        function handleImageChange(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    // Replace the first image (main image)
+                    productImages[0] = e.target.result;
+                    renderProductImages();
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Handle add new image
+        function handleAddNewImage(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    // Add the new image to the array
+                    productImages.push(e.target.result);
+                    renderProductImages();
+                    Utils.showNotification('New image added successfully!', 'success');
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Render product images in the edit modal
+        function renderProductImages() {
+            const container = document.getElementById('productImagesContainer');
+            container.innerHTML = productImages.map((image, index) => `
+                <div class="product-image-item relative group">
+                    <img src="${image}" alt="Product image ${index + 1}" 
+                        class="w-20 h-20 rounded-lg object-cover border border-gray-200 dark:border-[#3a3a3a]">
+                    ${index > 0 ? `
+                        <button type="button" onclick="removeImage(${index})" 
+                            class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-5 h-5 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                            <i class="ph ph-x text-xs"></i>
+                        </button>
+                    ` : ''}
+                </div>
+            `).join('');
+        }
+
+        // Remove an image from the product images array
+        function removeImage(index) {
+            if (index > 0 && index < productImages.length) {
+                productImages.splice(index, 1);
+                renderProductImages();
+            }
+        }
+
+        // Populate edit sizes with red checkboxes
+        function populateEditSizes(selectedSizes, category) {
+            const container = document.getElementById('editSizesContainer');
+            let availableSizes = [];
+
+            switch (category) {
+                case 't-shirts':
+                case 'jackets':
+                case 'dresses':
+                    availableSizes = ['XS', 'S', 'M', 'L', 'XL', 'XXL'];
+                    break;
+                case 'pants':
+                    availableSizes = ['28', '30', '32', '34', '36', '38', '40'];
+                    break;
+                case 'shoes':
+                    availableSizes = ['6', '7', '8', '9', '10', '11', '12', '13'];
+                    break;
+                case 'accessories':
+                    availableSizes = ['S', 'M', 'L'];
+                    break;
+                default:
+                    availableSizes = ['S', 'M', 'L', 'XL'];
+            }
+
+            container.innerHTML = availableSizes.map(size => `
+                <label class="flex items-center space-x-2 cursor-pointer">
+                    <input type="checkbox" value="${size}" ${selectedSizes.includes(size) ? 'checked' : ''} 
+                           class="red-checkbox">
+                    <span class="text-sm text-gray-700 dark:text-gray-300">${size}</span>
+                </label>
+            `).join('');
+        }
+
+        // Close delete modal
+        function closeDeleteModal() {
+            document.getElementById('deleteModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+            currentDeletingProduct = null;
+        }
+
+        // Confirm delete
+        function confirmDelete() {
+            if (!currentDeletingProduct) return;
+
+            // Remove product from array
+            const productIndex = products.findIndex(p => p.id === currentDeletingProduct.id);
+            if (productIndex !== -1) {
+                products.splice(productIndex, 1);
+            }
+
+            // Re-render products
+            renderProducts();
+
+            // Close modal
+            closeDeleteModal();
+
+            // Show success message using Utils from main.js
+            Utils.showNotification('Product deleted successfully!', 'success');
+        }
+
+        console.log('👕 Clothes4U Products page loaded successfully!');
+    </script>
+</body>
+
+</html>
